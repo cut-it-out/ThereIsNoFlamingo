@@ -17,15 +17,13 @@ public class Player : RealViewAffectedObject
     private Vector2 maxBounds;
 
     private InputManager inputManager;
+    private Camera mainCamera;
     private Vector2 movingDirection;
 
     private void Awake()
     {
-        inputManager = InputManager.GetInstance();        
-    }
-
-    private void Start()
-    {        
+        inputManager = InputManager.GetInstance();
+        mainCamera = Camera.main;
         InitBounds();
     }
 
@@ -43,8 +41,7 @@ public class Player : RealViewAffectedObject
     //}
 
     private void InitBounds()
-    {
-        Camera mainCamera = Camera.main;
+    {        
         minBounds = mainCamera.ViewportToWorldPoint(new Vector2(0, 0));
         maxBounds = mainCamera.ViewportToWorldPoint(new Vector2(1, 1));
     }
