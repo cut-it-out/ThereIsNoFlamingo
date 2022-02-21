@@ -44,9 +44,5 @@ public class FallingObject : RealViewAffectedObject
         paddingRight = this.paddingRight;
     }
 
-    public void DestroySelf()
-    {
-        Destroy(gameObject);
-    }
 
 }

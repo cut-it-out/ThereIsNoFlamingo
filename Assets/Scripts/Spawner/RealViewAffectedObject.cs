@@ -35,4 +35,10 @@ public class RealViewAffectedObject : MonoBehaviour
     {
         IsRealObject = value;
     }
+
+    public virtual void DestroySelf()
+    {
+        Game.GetInstance().OnRealViewToggle -= Player_OnRealViewToggle;
+        Destroy(gameObject);
+    }
 }

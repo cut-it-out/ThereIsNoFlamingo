@@ -22,7 +22,7 @@ public class Game : Singleton<Game>
     // Game related
     public bool IsPaused { get; private set; }
     public int PlayerLife { get; private set; }
-    public int MaxLevelReached { get; private set; }
+    public int CurrentScore { get; private set; }
     public bool IsGameOver { get; private set; }
     //public bool IsIntroStillRunning { get; private set; } = false;
 
@@ -61,7 +61,7 @@ public class Game : Singleton<Game>
         }
 
         IsGameOver = false;
-        MaxLevelReached = 0;
+        CurrentScore = 0;
 
     }
 
@@ -109,7 +109,13 @@ public class Game : Singleton<Game>
 
     #region Life, highscore related stuff
 
-    public void IncreaseMaxLevelReached() => MaxLevelReached++;
+    public void IncreaseCurrentScore() => CurrentScore++;
+
+    public void RealItemMissed()
+    {
+        UpdatePlayerLife(-1);
+        //StartCoroutine(DisplayLifeLostFeedback());
+    }
 
     private void UpdatePlayerLife(int value)
     {
@@ -152,7 +158,7 @@ public class Game : Singleton<Game>
         // init settings for new game 
         //levelManager.InitLevelManager();
         IsGameOver = false;
-        MaxLevelReached = 0;
+        CurrentScore = 0;
         InitPlayerLife();
         ResetRealViewForStart();
         ResumeGame(); // to make sure we don't stuck in pause

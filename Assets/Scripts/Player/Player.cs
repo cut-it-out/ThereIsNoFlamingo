@@ -34,12 +34,21 @@ public class Player : RealViewAffectedObject
         // subscribe for movement
         inputManager.OnMovement += InputManager_OnMovement;
     }
-
-    //protected override void OnDisable()
-    //{
-    //    base.OnDisable();
-    //    inputManager.OnMovement -= InputManager_OnMovement;
-    //}
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        FallingObject fallingObject = collision.gameObject.GetComponent<FallingObject>();
+        if (fallingObject.IsRealObject)
+        {
+            //catched the REAL one
+            Game.GetInstance().IncreaseCurrentScore();
+            //TODO: add some nice effect to visualize correct catch :)
+            fallingObject.DestroySelf();
+        }
+        else
+        {
+            // catched the WRONG one
+        }
+    }
 
     private void InitBounds()
     {        
