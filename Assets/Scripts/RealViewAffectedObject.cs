@@ -5,6 +5,10 @@ public class RealViewAffectedObject : MonoBehaviour
     [Header("Not Real View Sprites")]
     [SerializeField] private Sprite notRealSprite;
     [SerializeField] private Sprite realSprite;
+    [Header("Not Real View Mesh")]
+    [SerializeField] private Transform objMeshWithSpriteRenderer;
+
+    public bool IsRealObject { get; private set; } = false;
 
     protected virtual void OnEnable()
     {
@@ -23,6 +27,12 @@ public class RealViewAffectedObject : MonoBehaviour
 
     public void ShowRealSprite(bool showReal = true)
     {
-        transform.GetComponent<SpriteRenderer>().sprite = showReal ? realSprite : notRealSprite;
+        objMeshWithSpriteRenderer.GetComponent<SpriteRenderer>().sprite = showReal ? 
+            (IsRealObject == true ? realSprite : null ) : notRealSprite;
+    }
+
+    public void SetIsReal(bool value)
+    {
+        IsRealObject = value;
     }
 }

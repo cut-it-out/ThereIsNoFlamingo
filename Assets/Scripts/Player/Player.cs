@@ -25,6 +25,7 @@ public class Player : RealViewAffectedObject
         inputManager = InputManager.GetInstance();
         mainCamera = Camera.main;
         InitBounds();
+        SetIsReal(true); // to make sure player obj is visible in REAL view
     }
 
     protected override void OnEnable()
