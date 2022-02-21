@@ -2,26 +2,26 @@ using UnityEngine;
 
 public class RealViewAffectedObject : MonoBehaviour
 {
-    [SerializeField] private Material notRealMaterial;
-    [SerializeField] private Material realMaterial;
+    [SerializeField] private Sprite notRealSprite;
+    [SerializeField] private Sprite realSprite;
 
     protected virtual void OnEnable()
     {
         Game.GetInstance().OnRealViewToggle += Player_OnRealViewToggle;
     }
 
-    protected virtual void OnDisable()
-    {
-        Game.GetInstance().OnRealViewToggle -= Player_OnRealViewToggle;
-    }
+    //protected virtual void OnDisable()
+    //{
+    //    Game.GetInstance().OnRealViewToggle -= Player_OnRealViewToggle;
+    //}
 
     private void Player_OnRealViewToggle(object sender, Game.RealViewEventArgs e)
     {
-        ShowRealMaterial(e.isRealViewActive);
+        ShowRealSprite(e.isRealViewActive);
     }
 
-    public void ShowRealMaterial(bool showReal = true)
+    public void ShowRealSprite(bool showReal = true)
     {
-        transform.GetComponent<MeshRenderer>().material = showReal ? realMaterial : notRealMaterial;
+        transform.GetComponent<SpriteRenderer>().sprite = showReal ? realSprite : notRealSprite;
     }
 }

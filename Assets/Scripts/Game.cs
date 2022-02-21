@@ -46,7 +46,7 @@ public class Game : Singleton<Game>
     // cached vars
     private Bloom bloomComponent;
     private CanvasManager canvasManager;
-    //private InputManager inputManager;
+    private InputManager inputManager;
 
 
     protected override void Awake()
@@ -69,6 +69,11 @@ public class Game : Singleton<Game>
     void Start()
     {
         canvasManager = CanvasManager.GetInstance();
+        inputManager = InputManager.GetInstance();
+
+        // Subscribe to events
+        inputManager.OnRealViewKeyPressed += InputManager_OnRealViewKeyPressed;
+        inputManager.OnPauseMenuToggle += InputManager_OnPauseMenuToggle;
     }
 
     // Update is called once per frame
@@ -77,6 +82,30 @@ public class Game : Singleton<Game>
         // handle RealView timer updates
         HandleRealViewPublicTimers();
     }
+
+    private void InputManager_OnRealViewKeyPressed()
+    {
+        EnableRealView();
+    }
+
+    private void InputManager_OnPauseMenuToggle()
+    {
+        //if (!IsIntroStillRunning && !IsGameOver)
+        if (!IsGameOver)
+        {
+            if (IsPaused)
+            {
+                ResumeGame();
+                canvasManager.SwitchCanvas(CanvasType.GameUI);
+            }
+            else
+            {
+                PauseGame();
+                canvasManager.SwitchCanvas(CanvasType.PauseMenu);
+            }
+        }
+    }
+
 
     #region Life, highscore related stuff
 
