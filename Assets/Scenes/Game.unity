@@ -728,7 +728,7 @@ GameObject:
   - component: {fileID: 1312346857}
   m_Layer: 0
   m_Name: Camera
-  m_TagString: Untagged
+  m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -937,7 +937,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   realViewEnabledInterval: 3
-  realViewCooldownInterval: 10
+  realViewCooldownInterval: 2
   globalVolume: {fileID: 146692224}
   initialLifeCount: 3
   lifeLostFeedbackInterval: 1
@@ -1031,8 +1031,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -2413806693520163455, guid: ebe73ca9363db456bacf42c025bb4847, type: 3}
     - target: {fileID: 9173132882953404218, guid: bc061eb36f8924f49ae725a888b4cee1, type: 3}
+      propertyPath: paddingLeft
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 9173132882953404218, guid: bc061eb36f8924f49ae725a888b4cee1, type: 3}
       propertyPath: playerSpeed
-      value: 3
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9173132882953404218, guid: bc061eb36f8924f49ae725a888b4cee1, type: 3}
+      propertyPath: paddingRight
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 9173132882953404218, guid: bc061eb36f8924f49ae725a888b4cee1, type: 3}
       propertyPath: notRealSprite

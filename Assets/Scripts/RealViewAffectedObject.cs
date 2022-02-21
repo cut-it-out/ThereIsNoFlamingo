@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class RealViewAffectedObject : MonoBehaviour
 {
+    [Header("Not Real View Sprites")]
     [SerializeField] private Sprite notRealSprite;
     [SerializeField] private Sprite realSprite;
 

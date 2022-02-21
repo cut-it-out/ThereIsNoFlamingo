@@ -108,7 +108,7 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""name"": ""WASD"",
                     ""id"": ""34935a1b-195b-4d73-b75e-17816b269363"",
                     ""path"": ""2DVector"",
-                    ""interactions"": ""Press"",
+                    ""interactions"": ""Press(behavior=2)"",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Movement"",
@@ -136,17 +136,6 @@ public partial class @PlayerControls : IInputActionCollection2, IDisposable
                     ""action"": ""Movement"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""ArrowKeys"",
-                    ""id"": ""f228bb01-13d6-499a-aa74-0af0ee409110"",
-                    ""path"": ""2DVector"",
-                    ""interactions"": ""Press"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Movement"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
                 },
                 {
                     ""name"": ""left"",

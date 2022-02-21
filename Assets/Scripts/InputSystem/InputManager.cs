@@ -15,7 +15,8 @@ public class InputManager : Singleton<InputManager>
 
     #endregion
 
-    // swipe related variables    
+    // swipe related variables
+    [Header("Swipe Settings")]
     [SerializeField] private float minimumDistance = 20f; // TODO maybe update minimum Distance based current device resolution
     [SerializeField] private float maximumTime = 1f;
     [SerializeField, Range(0f, 1f)] private float directionThreshold = .9f;
@@ -52,6 +53,7 @@ public class InputManager : Singleton<InputManager>
 
         // Keyboard control
         playerControls.Player.Movement.started += ctx => OnWASDPressed(ctx);
+        playerControls.Player.Movement.canceled += ctx => OnWASDPressed(ctx);
         playerControls.Player.RealViewActivation.started += ctx => RealViewKeyPressed(ctx);
         playerControls.Player.PauseMenuActivation.started += ctx => PauseMenuKeyPressed(ctx);
     }
@@ -70,7 +72,8 @@ public class InputManager : Singleton<InputManager>
 
     private void OnWASDPressed(InputAction.CallbackContext context)
     {
-        OnMovement?.Invoke(context.ReadValue<Vector2>().normalized);
+        //OnMovement?.Invoke(context.ReadValue<Vector2>().normalized);
+        OnMovement?.Invoke(context.ReadValue<Vector2>());        
     }
     #endregion
 
