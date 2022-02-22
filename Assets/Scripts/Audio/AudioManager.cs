@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,6 +23,18 @@ public class AudioManager : Singleton<AudioManager>
         IsAmbientEnabled = true;
         IsMusicEnabled = true;
         IsEffectEnabled = true;
+
+        Game.GetInstance().OnRealViewToggle += Audio_OnRealViewToggle;
+    }
+
+    private void Audio_OnRealViewToggle(object sender, Game.RealViewEventArgs e)
+    {
+        EnableMusicEffect(e.isRealViewActive);
+    }
+
+    private void EnableMusicEffect(bool value)
+    {
+        musicAudioSource.bypassEffects = value;
     }
 
     private void Start()

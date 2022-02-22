@@ -12,7 +12,7 @@ public class RealViewAffectedObject : MonoBehaviour
 
     protected virtual void OnEnable()
     {
-        Game.GetInstance().OnRealViewToggle += Player_OnRealViewToggle;
+        Game.GetInstance().OnRealViewToggle += Object_OnRealViewToggle;
     }
 
     //protected virtual void OnDisable()
@@ -20,7 +20,7 @@ public class RealViewAffectedObject : MonoBehaviour
     //    Game.GetInstance().OnRealViewToggle -= Player_OnRealViewToggle;
     //}
 
-    private void Player_OnRealViewToggle(object sender, Game.RealViewEventArgs e)
+    private void Object_OnRealViewToggle(object sender, Game.RealViewEventArgs e)
     {
         ShowRealSprite(e.isRealViewActive);
     }
@@ -38,7 +38,7 @@ public class RealViewAffectedObject : MonoBehaviour
 
     public virtual void DestroySelf()
     {
-        Game.GetInstance().OnRealViewToggle -= Player_OnRealViewToggle;
+        Game.GetInstance().OnRealViewToggle -= Object_OnRealViewToggle;
         Destroy(gameObject);
     }
 }

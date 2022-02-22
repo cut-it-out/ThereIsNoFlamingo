@@ -136,7 +136,8 @@ public class Game : Singleton<Game>
         if (PlayerLife + value <= 0)
         {
             PlayerLife = 0;
-            GameOver();
+            //TODO: switch back gameover when debug is over!
+            //GameOver();
         }
         else
         {
@@ -186,7 +187,7 @@ public class Game : Singleton<Game>
         ResumeGame(); // to make sure we don't stuck in pause
 
         // start music track from beginning
-        //if (AudioManager.GetInstance().IsMusicEnabled) AudioManager.GetInstance().SetMusic(true);
+        if (AudioManager.GetInstance().IsMusicEnabled) AudioManager.GetInstance().SetMusic(true);
 
         // TODO: TRIGGER DroppingObjectSpawner
         
@@ -202,7 +203,7 @@ public class Game : Singleton<Game>
         AudioManager.GetInstance().StopMusic();
         AudioManager.GetInstance().PlayGameoverSound();
         
-        //StartCoroutine(DisplayLifeLostFeedback());        
+        StartCoroutine(DisplayLifeLostFeedback());        
         canvasManager.SwitchCanvas(CanvasType.YouDiedSplashScreen);
         IsGameOver = true;
         IsPaused = true;
