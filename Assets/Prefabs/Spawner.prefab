@@ -46,9 +46,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnZonePos: {fileID: 1990747757501026781}
-  spawnInterval: 3
+  spawnInterval: 2
   prefabToSpawn: {fileID: 1358164412274691944, guid: 9f76f65e43294c34693a257d99a5d97d, type: 3}
-  fallingSpeed: 2
+  fallingSpeed: 4
   minItemsPerRow: 3
   maxItemsPerRow: 6
 --- !u!1 &1990747757501026770
@@ -91,6 +91,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2962107806728240905}
   - component: {fileID: 7785563793937620502}
+  - component: {fileID: 1877201321}
+  - component: {fileID: 1877201322}
   m_Layer: 0
   m_Name: GameObjectSchredder
   m_TagString: Untagged
@@ -138,3 +140,36 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 17.867859, y: 1}
   m_EdgeRadius: 0
+--- !u!50 &1877201321
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3440384774295515093}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!114 &1877201322
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3440384774295515093}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9378f493fdde04443a2fe297be79c55d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -166,7 +166,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.801
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -571,7 +571,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.303
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -925,9 +925,9 @@ MonoBehaviour:
   musicAudioSource: {fileID: 472873304}
   effectAudioSource: {fileID: 13520024}
   ambientAudioSource: {fileID: 399379841}
-  movementAudioSource: {fileID: 0}
   gameoverClip: {fileID: 0}
-  damageClip: {fileID: 0}
+  damageClip: {fileID: 8300000, guid: b1f9a835f4f8e1242a17efb9d2486d7c, type: 3}
+  positiveFeedbackClip: {fileID: 8300000, guid: 9577982b06a34c040a97e874bc7fb301, type: 3}
 --- !u!224 &842879045 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8884070642381245029, guid: fcd8f3cb46bb8fa41a68edb363a21359, type: 3}
@@ -1227,44 +1227,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1877201318 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3440384774295515093, guid: 4fe265b76ee1dc44a801ad6c282beebd, type: 3}
-  m_PrefabInstance: {fileID: 1990747757713573333}
-  m_PrefabAsset: {fileID: 0}
---- !u!50 &1877201321
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1877201318}
-  m_BodyType: 1
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 0
---- !u!114 &1877201322
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1877201318}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9378f493fdde04443a2fe297be79c55d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1949422882
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1441,14 +1403,6 @@ PrefabInstance:
     - target: {fileID: 1990747757136457385, guid: 4fe265b76ee1dc44a801ad6c282beebd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1990747757136457390, guid: 4fe265b76ee1dc44a801ad6c282beebd, type: 3}
-      propertyPath: fallingSpeed
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1990747757136457390, guid: 4fe265b76ee1dc44a801ad6c282beebd, type: 3}
-      propertyPath: spawnInterval
-      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1990747757136457391, guid: 4fe265b76ee1dc44a801ad6c282beebd, type: 3}
       propertyPath: m_Name

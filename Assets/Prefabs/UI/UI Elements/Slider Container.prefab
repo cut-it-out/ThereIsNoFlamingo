@@ -493,8 +493,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Volume
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5d9f81f6ef64bd041b3175e3ee984c92, type: 2}
-  m_sharedMaterial: {fileID: 1483743384194140184, guid: 5d9f81f6ef64bd041b3175e3ee984c92, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -608,13 +608,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2768647031316955229}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6821e7e28b87d2348bf14fb71a1ab67b, type: 3}
+  m_Script: {fileID: 11500000, guid: 2e57658dccd895d4095187d458f75f48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volumeParameter: MusicVolume
-  mixer: {fileID: 24100000, guid: 538edd72925308d40bf218186a0a7194, type: 2}
+  type: 0
   slider: {fileID: 2768647030933940790}
   multiplier: 30
+  defaultValue: 0.8
   toggle: {fileID: 2768647031519648968}
 --- !u!1 &2768647031444412593
 GameObject:

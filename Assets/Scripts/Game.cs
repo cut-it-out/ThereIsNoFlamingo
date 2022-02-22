@@ -145,7 +145,7 @@ public class Game : Singleton<Game>
 
     IEnumerator DisplayPositiveFeedback()
     {
-        AudioManager.GetInstance().PlayDamageSound();
+        AudioManager.GetInstance().PlayPositiveFeedbackSound();
         canvasManager.ActivateCanvas(CanvasType.PositiveFeedbackScreen, true);
         yield return new WaitForSeconds(lifeLostFeedbackInterval);
         canvasManager.ActivateCanvas(CanvasType.PositiveFeedbackScreen, false);
