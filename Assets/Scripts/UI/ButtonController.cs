@@ -9,8 +9,7 @@ public enum ButtonType
     RESET_GAME,
     MAIN_MENU,
     QUIT,
-    ENABLE_REAL_VIEW,
-    TOGGLE_REAL_VIEW_UI_SIDE
+    ENABLE_REAL_VIEW
 }
 
 [RequireComponent(typeof(Button))]
@@ -61,9 +60,6 @@ public class ButtonController : MonoBehaviour
                 break;
             case ButtonType.ENABLE_REAL_VIEW:
                 //Game.GetInstance().EnableRealView();
-                break;
-            case ButtonType.TOGGLE_REAL_VIEW_UI_SIDE:
-                //GetComponent<RealViewToggleButton>().ToggleSenseLightPlacement();
                 break;
             default:
                 break;
