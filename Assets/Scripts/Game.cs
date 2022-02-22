@@ -18,6 +18,8 @@ public class Game : Singleton<Game>
     [SerializeField] private float lifeLostFeedbackInterval = 1f;
     [SerializeField] private float feebackShakeIntensity = 2f;
 
+    [Header("NotCatchedZone")]
+    [SerializeField] private GameObject notCatchedZone;
 
     // Game related
     public bool IsPaused { get; private set; }
@@ -75,6 +77,8 @@ public class Game : Singleton<Game>
         inputManager.OnRealViewKeyPressed += InputManager_OnRealViewKeyPressed;
         inputManager.OnPauseMenuToggle += InputManager_OnPauseMenuToggle;
 
+
+
         StartGame();
     }
 
@@ -108,6 +112,10 @@ public class Game : Singleton<Game>
         }
     }
 
+    public void AdjustNotCatchedCheckZone(float playerY)
+    {
+        notCatchedZone.GetComponent<NotCatchedZone>().AdjustPositionToPlayerY(playerY);
+    }
 
     #region Life, highscore related stuff
 

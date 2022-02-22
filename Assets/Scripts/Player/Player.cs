@@ -26,6 +26,8 @@ public class Player : RealViewAffectedObject
         mainCamera = Camera.main;
         InitBounds();
         SetIsReal(true); // to make sure player obj is visible in REAL view
+        transform.position = new Vector2(transform.position.x, playerYPosition); // set player to start
+        Game.GetInstance().AdjustNotCatchedCheckZone(playerYPosition);
     }
 
     protected override void OnEnable()
@@ -37,7 +39,7 @@ public class Player : RealViewAffectedObject
     private void OnTriggerEnter2D(Collider2D collision)
     {
         FallingObject fallingObject = collision.gameObject.GetComponent<FallingObject>();
-        if (fallingObject.IsRealObject)
+        if (fallingObject != null && fallingObject.IsRealObject)
         {
             //catched the REAL one
             Game.GetInstance().IncreaseCurrentScore();
