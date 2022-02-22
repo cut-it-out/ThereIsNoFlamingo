@@ -74,6 +74,8 @@ public class Game : Singleton<Game>
         // Subscribe to events
         inputManager.OnRealViewKeyPressed += InputManager_OnRealViewKeyPressed;
         inputManager.OnPauseMenuToggle += InputManager_OnPauseMenuToggle;
+
+        StartGame();
     }
 
     // Update is called once per frame
@@ -109,12 +111,16 @@ public class Game : Singleton<Game>
 
     #region Life, highscore related stuff
 
-    public void IncreaseCurrentScore() => CurrentScore++;
+    public void IncreaseCurrentScore()
+    {
+        CurrentScore++;
+        StartCoroutine(DisplayPositiveFeedback());
+    }
 
     public void RealItemMissed()
     {
         UpdatePlayerLife(-1);
-        //StartCoroutine(DisplayLifeLostFeedback());
+        StartCoroutine(DisplayLifeLostFeedback());
     }
 
     private void UpdatePlayerLife(int value)
@@ -135,6 +141,14 @@ public class Game : Singleton<Game>
         canvasManager.ActivateCanvas(CanvasType.LifeLostFeedbackScreen, true);
         yield return new WaitForSeconds(lifeLostFeedbackInterval);
         canvasManager.ActivateCanvas(CanvasType.LifeLostFeedbackScreen, false);
+    }
+
+    IEnumerator DisplayPositiveFeedback()
+    {
+        AudioManager.GetInstance().PlayDamageSound();
+        canvasManager.ActivateCanvas(CanvasType.PositiveFeedbackScreen, true);
+        yield return new WaitForSeconds(lifeLostFeedbackInterval);
+        canvasManager.ActivateCanvas(CanvasType.PositiveFeedbackScreen, false);
     }
 
     //public float GetLifeLostFeedbackInterval() => lifeLostFeedbackInterval;
@@ -164,7 +178,7 @@ public class Game : Singleton<Game>
         ResumeGame(); // to make sure we don't stuck in pause
 
         // start music track from beginning
-        if (AudioManager.GetInstance().IsMusicEnabled) AudioManager.GetInstance().SetMusic(true);
+        //if (AudioManager.GetInstance().IsMusicEnabled) AudioManager.GetInstance().SetMusic(true);
 
         // TODO: TRIGGER DroppingObjectSpawner
         

@@ -7,10 +7,10 @@ public class AudioManager : Singleton<AudioManager>
     [SerializeField] AudioSource musicAudioSource;
     [SerializeField] AudioSource effectAudioSource;
     [SerializeField] AudioSource ambientAudioSource;
-    [SerializeField] AudioSource movementAudioSource;
 
     [SerializeField] AudioClip gameoverClip;
     [SerializeField] AudioClip damageClip;
+    [SerializeField] AudioClip positiveFeedbackClip;
 
     public bool IsAmbientEnabled { get; private set; }
     public bool IsMusicEnabled { get; private set; }
@@ -29,27 +29,6 @@ public class AudioManager : Singleton<AudioManager>
         VolumeManager.GetInstance().InitVolumeControllers();
     }
 
-    public void PlayMovementSound(bool isMoving)
-    {
-        if (IsEffectEnabled)
-        {
-            if (isMoving)
-            {
-                if (!movementAudioSource.isPlaying)
-                {
-                    movementAudioSource.Play();
-                }
-            }
-            else
-            {
-                if (movementAudioSource.isPlaying)
-                {
-                    movementAudioSource.Stop();
-                }
-            }
-        }
-    }
-
     public void PlayGameoverSound()
     {
         if (IsEffectEnabled)
@@ -63,6 +42,14 @@ public class AudioManager : Singleton<AudioManager>
         if (IsEffectEnabled)
         {
             effectAudioSource.PlayOneShot(damageClip);
+        }
+    }
+    
+    public void PlayPositiveFeedbackSound()
+    {
+        if (IsEffectEnabled)
+        {
+            effectAudioSource.PlayOneShot(positiveFeedbackClip);
         }
     }
 
