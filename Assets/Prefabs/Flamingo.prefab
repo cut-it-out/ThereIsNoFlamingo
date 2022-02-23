@@ -71,7 +71,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 650c5e137e846674496f94312a003805, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 296756f8051f00c479a956957932fba6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -128,8 +128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e950360c6201fce4c9fc655e433b5f17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notRealSprite: {fileID: 21300000, guid: 650c5e137e846674496f94312a003805, type: 3}
-  realSprite: {fileID: 21300000, guid: c36cca5ceaa69ec44892a79fb414ceeb, type: 3}
+  notRealSprite: {fileID: 21300000, guid: 296756f8051f00c479a956957932fba6, type: 3}
+  realSprite: {fileID: 21300000, guid: 2c6b882aa010941479cc61797e317bb6, type: 3}
   objMeshWithSpriteRenderer: {fileID: 1358164411854517545}
   paddingLeft: 1
   paddingRight: 1
@@ -146,7 +146,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.015993595, y: 0.10495412}
+  m_Offset: {x: 0.011350632, y: -0.062191665}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -157,7 +157,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.2296042, y: 1.4904482}
+  m_Size: {x: 2.2203183, y: 1.5368778}
   m_EdgeRadius: 0
 --- !u!50 &18936413591654106
 Rigidbody2D:
