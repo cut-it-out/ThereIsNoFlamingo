@@ -34,8 +34,8 @@ public class ButtonController : MonoBehaviour
         switch (buttonType)
         {
             case ButtonType.START_GAME:
-                //game.StartGame();
-                //canvasManager.SwitchCanvas(CanvasType.GameUI);
+                game.StartGame();
+                canvasManager.SwitchCanvas(CanvasType.GameUI);
                 break;
             case ButtonType.PAUSE_GAME:
                 game.PauseGame();

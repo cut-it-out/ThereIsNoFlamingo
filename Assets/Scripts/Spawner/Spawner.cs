@@ -15,7 +15,7 @@ public class Spawner : Singleton<Spawner>
     [SerializeField] int minItemsPerRow = 3;
     [SerializeField] int maxItemsPerRow = 6;
 
-    List<FallingObject> fallingObjects = new List<FallingObject>();
+    //List<FallingObject> fallingObjects = new List<FallingObject>();
 
     private Vector2 minBounds;
     private Vector2 maxBounds;
@@ -32,9 +32,19 @@ public class Spawner : Singleton<Spawner>
     {
         mainCamera = Camera.main;
         InitBounds();
-        spawnerCR = StartCoroutine(SpawnerTask());        
+        
     }
 
+    public void InitSpawner()
+    {
+        spawnerCR = StartCoroutine(SpawnerTask());
+    }
+
+    public void StopSpawner()
+    {
+        StopCoroutine(spawnerCR);
+    }
+    
     IEnumerator SpawnerTask()
     {
         while (true)
@@ -80,10 +90,7 @@ public class Spawner : Singleton<Spawner>
                 isReal = true;
             }
 
-            fallingObjects.Add(
-                Spawn(
-                    new Vector2(minSpawnX + (spawnDistance / 2) + i * spawnDistance, spawnZonePos.transform.position.y), 
-                    isReal));
+            Spawn(new Vector2(minSpawnX + (spawnDistance / 2) + i * spawnDistance, spawnZonePos.transform.position.y), isReal);
         }
 
     }

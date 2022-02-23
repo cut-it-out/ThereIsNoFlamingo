@@ -77,9 +77,7 @@ public class Game : Singleton<Game>
         inputManager.OnRealViewKeyPressed += InputManager_OnRealViewKeyPressed;
         inputManager.OnPauseMenuToggle += InputManager_OnPauseMenuToggle;
 
-
-
-        StartGame();
+        //StartGame();
     }
 
     // Update is called once per frame
@@ -136,8 +134,7 @@ public class Game : Singleton<Game>
         if (PlayerLife + value <= 0)
         {
             PlayerLife = 0;
-            //TODO: switch back gameover when debug is over!
-            //GameOver();
+            GameOver();
         }
         else
         {
@@ -184,6 +181,7 @@ public class Game : Singleton<Game>
         CurrentScore = 0;
         InitPlayerLife();
         ResetRealViewForStart();
+        Spawner.GetInstance().InitSpawner();
         ResumeGame(); // to make sure we don't stuck in pause
 
         // start music track from beginning
@@ -204,7 +202,9 @@ public class Game : Singleton<Game>
         AudioManager.GetInstance().PlayGameoverSound();
         
         StartCoroutine(DisplayLifeLostFeedback());        
-        canvasManager.SwitchCanvas(CanvasType.YouDiedSplashScreen);
+        //canvasManager.SwitchCanvas(CanvasType.YouDiedSplashScreen);
+        canvasManager.SwitchCanvas(CanvasType.GameOver);
+        Spawner.GetInstance().StopSpawner();
         IsGameOver = true;
         IsPaused = true;
 
