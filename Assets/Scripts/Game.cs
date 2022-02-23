@@ -206,18 +206,19 @@ public class Game : Singleton<Game>
         // start music track from beginning
         if (AudioManager.GetInstance().IsMusicEnabled) AudioManager.GetInstance().SetMusic(true);
 
-        // TODO: TRIGGER DroppingObjectSpawner
-        
     }
     public void ResetGame()
     {
         IsPaused = true;
+        Spawner.GetInstance().StopSpawner();
         Spawner.GetInstance().RemoveAllRemainingFallingObjects(); //remove remaining objects
         StartGame();
     }
 
     public void GameOver()
     {
+        // TODO: maybe refactor to use events to trigger stuff in other classes (like spawner, audiomanager)
+
         AudioManager.GetInstance().StopMusic();
         AudioManager.GetInstance().PlayGameoverSound();
         

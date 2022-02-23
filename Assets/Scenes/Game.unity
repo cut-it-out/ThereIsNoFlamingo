@@ -1293,6 +1293,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1990747757136457390, guid: 4fe265b76ee1dc44a801ad6c282beebd, type: 3}
+      propertyPath: prefabToSpawn
+      value: 
+      objectReference: {fileID: 1358164412274691944, guid: 74590d761e9ef59479a0cb36af5baa3b, type: 3}
+    - target: {fileID: 1990747757136457390, guid: 4fe265b76ee1dc44a801ad6c282beebd, type: 3}
       propertyPath: spawnInterval
       value: 1.8
       objectReference: {fileID: 0}
