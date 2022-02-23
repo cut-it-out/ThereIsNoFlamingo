@@ -110,11 +110,11 @@ public class Spawner : Singleton<Spawner>
     }
 
     public void RemoveAllRemainingFallingObjects()
-    {
-        //foreach (FallingObject fallingObj in fallingObjects)
-        //{
-        //    fallingObj?.DestroySelf();
-        //}
+    {  
+        while (fallingObjects.Count > 0)
+        {
+            fallingObjects[fallingObjects.Count - 1].DestroySelf();
+        }
 
         fallingObjects.Clear();
     }
