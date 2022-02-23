@@ -37,13 +37,13 @@ public class Spawner : Singleton<Spawner>
 
     public void InitSpawner()
     {
-        if (spawnerCR != null) StopSpawner(); //double check to be sure not to run several times :D
+        StopSpawner(); //double check to be sure not to run several times :D
         spawnerCR = StartCoroutine(SpawnerTask());
     }
 
     public void StopSpawner()
     {
-        StopCoroutine(spawnerCR);
+        if (spawnerCR != null) StopCoroutine(spawnerCR); 
         spawnerCR = null;
     }
     

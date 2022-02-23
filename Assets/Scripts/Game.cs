@@ -25,7 +25,7 @@ public class Game : Singleton<Game>
     public bool IsPaused { get; private set; }
     public int PlayerLife { get; private set; }
     public int CurrentScore { get; private set; }
-    public bool IsGameOver { get; private set; }
+    public bool IsGameOver { get; private set; } = true;
     //public bool IsIntroStillRunning { get; private set; } = false;
 
 
@@ -67,7 +67,7 @@ public class Game : Singleton<Game>
             bloomComponent = tempBloom;
         }
 
-        IsGameOver = false;
+        //IsGameOver = true;
         UpdateScore(true);
 
     }
@@ -110,7 +110,7 @@ public class Game : Singleton<Game>
             else
             {
                 PauseGame();
-                canvasManager.SwitchCanvas(CanvasType.PauseMenu);
+                canvasManager.SwitchCanvas(CanvasType.MainMenu);
             }
         }
     }
@@ -195,7 +195,7 @@ public class Game : Singleton<Game>
 
         // init settings for new game 
         //levelManager.InitLevelManager();
-        
+
         IsGameOver = false;
         UpdateScore(true);
         InitPlayerLife();
@@ -210,6 +210,7 @@ public class Game : Singleton<Game>
     public void ResetGame()
     {
         IsPaused = true;
+        IsGameOver = true;
         Spawner.GetInstance().StopSpawner();
         Spawner.GetInstance().RemoveAllRemainingFallingObjects(); //remove remaining objects
         StartGame();
@@ -218,6 +219,8 @@ public class Game : Singleton<Game>
     public void GameOver()
     {
         // TODO: maybe refactor to use events to trigger stuff in other classes (like spawner, audiomanager)
+
+        IsGameOver = true;
 
         AudioManager.GetInstance().StopMusic();
         AudioManager.GetInstance().PlayGameoverSound();
@@ -229,7 +232,7 @@ public class Game : Singleton<Game>
 
         canvasManager.SwitchCanvas(CanvasType.GameOver);
         Spawner.GetInstance().StopSpawner();
-        IsGameOver = true;
+
         IsPaused = true;
 
     }

@@ -39,7 +39,7 @@ public class ButtonController : MonoBehaviour
                 break;
             case ButtonType.PAUSE_GAME:
                 game.PauseGame();
-                canvasManager.SwitchCanvas(CanvasType.PauseMenu);
+                canvasManager.SwitchCanvas(CanvasType.MainMenu);
                 break;
             case ButtonType.RESUME_GAME:
                 game.ResumeGame();

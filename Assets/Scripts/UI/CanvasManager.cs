@@ -7,12 +7,11 @@ public enum CanvasType
 {
     IntroUI,
     GameUI,
-    PauseMenu,
+    MainMenu,
     GameOver,
     LifeLostFeedbackScreen,
     YouDiedSplashScreen,
-    PositiveFeedbackScreen,
-    StartGame
+    PositiveFeedbackScreen
 }
 
 public class CanvasManager : Singleton<CanvasManager>
@@ -25,7 +24,7 @@ public class CanvasManager : Singleton<CanvasManager>
         base.Awake();
         canvasControllerList = GetComponentsInChildren<CanvasController>().ToList();
         canvasControllerList.ForEach(x => x.gameObject.SetActive(false));
-        SwitchCanvas(CanvasType.StartGame);
+        SwitchCanvas(CanvasType.MainMenu);
         
     }
 
