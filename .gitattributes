@@ -10,3 +10,4 @@
 *.compute text
 *.md      text
 */ProjectSettings/*.asset text
+Assets/TextMesh Pro/Shaders/* linguist-vendored
