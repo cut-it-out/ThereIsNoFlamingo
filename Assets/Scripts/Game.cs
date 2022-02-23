@@ -28,6 +28,11 @@ public class Game : Singleton<Game>
     public bool IsGameOver { get; private set; }
     //public bool IsIntroStillRunning { get; private set; } = false;
 
+
+    // score change event
+    public delegate void ScoreChanged();
+    public event ScoreChanged OnScoreChanged;
+
     // RealView event
     public event EventHandler<RealViewEventArgs> OnRealViewToggle;
     public class RealViewEventArgs : EventArgs
@@ -63,7 +68,7 @@ public class Game : Singleton<Game>
         }
 
         IsGameOver = false;
-        CurrentScore = 0;
+        UpdateScore(true);
 
     }
 
@@ -119,8 +124,21 @@ public class Game : Singleton<Game>
 
     public void IncreaseCurrentScore()
     {
-        CurrentScore++;
+        UpdateScore();
         StartCoroutine(DisplayPositiveFeedback());
+    }
+
+    private void UpdateScore(bool resetScore = false)
+    {
+        if (resetScore)
+        {
+            CurrentScore = 0;
+        }
+        else
+        {
+            CurrentScore++;
+        }
+        OnScoreChanged?.Invoke();
     }
 
     public void RealItemMissed()
@@ -179,7 +197,7 @@ public class Game : Singleton<Game>
         //levelManager.InitLevelManager();
         
         IsGameOver = false;
-        CurrentScore = 0;
+        UpdateScore(true);
         InitPlayerLife();
         ResetRealViewForStart();
         Spawner.GetInstance().InitSpawner();
