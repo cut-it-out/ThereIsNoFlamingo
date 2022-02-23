@@ -44,5 +44,10 @@ public class FallingObject : RealViewAffectedObject
         paddingRight = this.paddingRight;
     }
 
+    public override void DestroySelf()
+    {
+        Spawner.GetInstance().RemoveFallingObject(this);
+        base.DestroySelf();
+    }
 
 }

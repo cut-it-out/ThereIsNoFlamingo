@@ -15,7 +15,7 @@ public class Spawner : Singleton<Spawner>
     [SerializeField] int minItemsPerRow = 3;
     [SerializeField] int maxItemsPerRow = 6;
 
-    //List<FallingObject> fallingObjects = new List<FallingObject>();
+    List<FallingObject> fallingObjects = new List<FallingObject>();
 
     private Vector2 minBounds;
     private Vector2 maxBounds;
@@ -90,7 +90,11 @@ public class Spawner : Singleton<Spawner>
                 isReal = true;
             }
 
-            Spawn(new Vector2(minSpawnX + (spawnDistance / 2) + i * spawnDistance, spawnZonePos.transform.position.y), isReal);
+            FallingObject newFallingObject = 
+                Spawn(new Vector2(minSpawnX + (spawnDistance / 2) + i * spawnDistance, spawnZonePos.transform.position.y), isReal);
+
+            fallingObjects.Add(newFallingObject);
+            
         }
 
     }
@@ -98,5 +102,20 @@ public class Spawner : Singleton<Spawner>
     public FallingObject Spawn(Vector2 spawnPos, bool isReal)
     {
         return FallingObject.Create(prefabToSpawn.transform, spawnPos, fallingSpeed, isReal, Game.GetInstance().IsRealViewEnabled);
+    }
+
+    public void RemoveFallingObject(FallingObject fallingObj)
+    {
+        fallingObjects.Remove(fallingObj);
+    }
+
+    public void RemoveAllRemainingFallingObjects()
+    {
+        //foreach (FallingObject fallingObj in fallingObjects)
+        //{
+        //    fallingObj?.DestroySelf();
+        //}
+
+        fallingObjects.Clear();
     }
 }

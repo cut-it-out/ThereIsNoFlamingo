@@ -177,6 +177,7 @@ public class Game : Singleton<Game>
 
         // init settings for new game 
         //levelManager.InitLevelManager();
+        
         IsGameOver = false;
         CurrentScore = 0;
         InitPlayerLife();
@@ -193,6 +194,7 @@ public class Game : Singleton<Game>
     public void ResetGame()
     {
         IsPaused = true;
+        Spawner.GetInstance().RemoveAllRemainingFallingObjects(); //remove remaining objects
         StartGame();
     }
 
@@ -201,8 +203,11 @@ public class Game : Singleton<Game>
         AudioManager.GetInstance().StopMusic();
         AudioManager.GetInstance().PlayGameoverSound();
         
-        StartCoroutine(DisplayLifeLostFeedback());        
+        StartCoroutine(DisplayLifeLostFeedback());
         //canvasManager.SwitchCanvas(CanvasType.YouDiedSplashScreen);
+
+        Spawner.GetInstance().RemoveAllRemainingFallingObjects(); //remove remaining objects
+
         canvasManager.SwitchCanvas(CanvasType.GameOver);
         Spawner.GetInstance().StopSpawner();
         IsGameOver = true;
