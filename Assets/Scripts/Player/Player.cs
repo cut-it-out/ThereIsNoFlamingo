@@ -6,7 +6,8 @@ using UnityEngine;
 public class Player : RealViewAffectedObject
 {
     [Header("Player Movement")]
-    [SerializeField] float playerSpeed = 3f;
+    [SerializeField] float playerSpeed = 10f;
+    [SerializeField] float playerXPosition = 0f;
     [SerializeField] float playerYPosition = -12f;
 
     [Header("Player Movement padding")]
@@ -26,8 +27,13 @@ public class Player : RealViewAffectedObject
         mainCamera = Camera.main;
         InitBounds();
         SetIsReal(true); // to make sure player obj is visible in REAL view
-        transform.position = new Vector2(transform.position.x, playerYPosition); // set player to start
+        ResetPlayerPositionToStart();
         Game.GetInstance().AdjustNotCatchedCheckZone(playerYPosition);
+    }
+
+    public void ResetPlayerPositionToStart()
+    {
+        transform.position = new Vector2(playerXPosition, playerYPosition); // set player to start
     }
 
     protected override void OnEnable()

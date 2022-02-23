@@ -21,6 +21,9 @@ public class Game : Singleton<Game>
     [Header("NotCatchedZone")]
     [SerializeField] private GameObject notCatchedZone;
 
+    [Header("Player object")]
+    [SerializeField] Player player;
+
     // Game related
     public bool IsPaused { get; private set; }
     public int PlayerLife { get; private set; }
@@ -94,7 +97,10 @@ public class Game : Singleton<Game>
 
     private void InputManager_OnRealViewKeyPressed()
     {
-        EnableRealView();
+        if (!IsGameOver && !IsPaused)
+        {
+            EnableRealView();
+        }
     }
 
     private void InputManager_OnPauseMenuToggle()
@@ -190,14 +196,10 @@ public class Game : Singleton<Game>
     #region Basic Game Stuff (start, reset, pause, etc)
 
     public void StartGame()
-    {
-        Debug.Log($"StartGame()");
-
-        // init settings for new game 
-        //levelManager.InitLevelManager();
-
+    {        
         IsGameOver = false;
         UpdateScore(true);
+        player.ResetPlayerPositionToStart();
         InitPlayerLife();
         ResetRealViewForStart();
         Spawner.GetInstance().InitSpawner();
@@ -209,31 +211,28 @@ public class Game : Singleton<Game>
     }
     public void ResetGame()
     {
+        StopGame();
+        StartGame();
+    }
+
+    public void StopGame()
+    {
         IsPaused = true;
         IsGameOver = true;
         Spawner.GetInstance().StopSpawner();
         Spawner.GetInstance().RemoveAllRemainingFallingObjects(); //remove remaining objects
-        StartGame();
+
     }
 
     public void GameOver()
     {
         // TODO: maybe refactor to use events to trigger stuff in other classes (like spawner, audiomanager)
 
-        IsGameOver = true;
+        StopGame();
 
-        AudioManager.GetInstance().StopMusic();
-        AudioManager.GetInstance().PlayGameoverSound();
-        
         StartCoroutine(DisplayLifeLostFeedback());
         //canvasManager.SwitchCanvas(CanvasType.YouDiedSplashScreen);
-
-        Spawner.GetInstance().RemoveAllRemainingFallingObjects(); //remove remaining objects
-
         canvasManager.SwitchCanvas(CanvasType.GameOver);
-        Spawner.GetInstance().StopSpawner();
-
-        IsPaused = true;
 
     }
 
