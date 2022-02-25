@@ -4,14 +4,21 @@ using UnityEngine;
 
 public class Spawner : Singleton<Spawner>
 {
+    // events
+    public delegate void ProgressMultiplierChange(float newSpeed);
+    public event ProgressMultiplierChange OnProgressMultiplierChange;
+
 
     [Header("Spawner Settings")]
     [SerializeField] Transform spawnZonePos;
-    [SerializeField] float spawnInterval = 3f;
+    [SerializeField] float initialSpawnInterval = 1.7f;
+    [SerializeField] float initialFallingSpeed = 2f;
+    [SerializeField] float speedIncrementValue = 0.1f;
+    [SerializeField] float spawnIntervalIncrementValue = -0.1f;
+    [SerializeField] float maxProgressMultiplier = 5f;
 
     [Header("Spawner Input")]
     [SerializeField] GameObject prefabToSpawn;
-    [SerializeField] float fallingSpeed = 2f;
     [SerializeField] int minItemsPerRow = 3;
     [SerializeField] int maxItemsPerRow = 6;
 
@@ -19,6 +26,10 @@ public class Spawner : Singleton<Spawner>
 
     private Vector2 minBounds;
     private Vector2 maxBounds;
+
+    private float spawnInterval;
+    private float fallingSpeed;
+    private float progressMultiplier = 0f;
 
     private float minSpawnX;
     private float maxSpawnX;
@@ -32,7 +43,8 @@ public class Spawner : Singleton<Spawner>
     {
         mainCamera = Camera.main;
         InitBounds();
-        
+        UpdateFallingSpeedAndSpawnInterval();
+
     }
 
     public void InitSpawner()
@@ -52,7 +64,7 @@ public class Spawner : Singleton<Spawner>
         while (true)
         {
             SpawnRow(UnityEngine.Random.Range(minItemsPerRow, maxItemsPerRow));
-            yield return new WaitForSeconds(spawnInterval);
+            yield return new WaitForSeconds(spawnInterval );
         }
     }
 
@@ -62,7 +74,7 @@ public class Spawner : Singleton<Spawner>
         maxBounds = mainCamera.ViewportToWorldPoint(new Vector2(1, 0)); // stay on bottom line
     }
 
-    public void SpawnRow(int nbrOfItemsToSpawn)
+    private void SpawnRow(int nbrOfItemsToSpawn)
     {
         FallingObject fallingObj = prefabToSpawn.GetComponent<FallingObject>();
         fallingObj.GetPadding(out float objPaddingLeft, out float objPaddingRight);
@@ -70,6 +82,8 @@ public class Spawner : Singleton<Spawner>
         // set min & max X pos
         minSpawnX = minBounds.x ;
         maxSpawnX = maxBounds.x ;
+
+        // TODO: add variance to available spawnLineDistance (have items more concentrated in middle)
 
         // calculate distance to place objects same distance from each other
         float spawnLineDistance = Vector2.Distance(minBounds, maxBounds);
@@ -101,9 +115,13 @@ public class Spawner : Singleton<Spawner>
 
     }
 
-    public FallingObject Spawn(Vector2 spawnPos, bool isReal)
+    private FallingObject Spawn(Vector2 spawnPos, bool isReal)
     {
-        return FallingObject.Create(prefabToSpawn.transform, spawnPos, fallingSpeed, isReal, Game.GetInstance().IsRealViewEnabled);
+        return FallingObject.Create(
+            prefabToSpawn.transform, 
+            spawnPos, 
+            fallingSpeed, 
+            isReal);
     }
 
     public void RemoveFallingObject(FallingObject fallingObj)
@@ -119,5 +137,21 @@ public class Spawner : Singleton<Spawner>
         }
 
         fallingObjects.Clear();
+    }
+
+    public void IncreaseProgressMultiplier(float incrementValue = 1f)
+    {
+        progressMultiplier += incrementValue;
+        UpdateFallingSpeedAndSpawnInterval();
+        Debug.Log($"The Game just got harder, setting multiplier to {progressMultiplier}");
+
+        // trigger change event
+        OnProgressMultiplierChange?.Invoke(fallingSpeed);
+    }
+
+    private void UpdateFallingSpeedAndSpawnInterval()
+    {
+        spawnInterval = initialSpawnInterval + (spawnIntervalIncrementValue * progressMultiplier);
+        fallingSpeed = initialFallingSpeed + (speedIncrementValue * progressMultiplier);
     }
 }

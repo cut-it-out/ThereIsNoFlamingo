@@ -18,11 +18,14 @@ public class Game : Singleton<Game>
     [SerializeField] private float lifeLostFeedbackInterval = 1f;
     [SerializeField] private float feebackShakeIntensity = 2f;
 
+    [Header("Progress related")]
+    [SerializeField] private int progressAfterScore = 5;
+
     [Header("NotCatchedZone")]
     [SerializeField] private GameObject notCatchedZone;
 
     [Header("Player object")]
-    [SerializeField] Player player;
+    [SerializeField] Player player; //to easily reset player position
 
     // Game related
     public bool IsPaused { get; private set; }
@@ -144,7 +147,16 @@ public class Game : Singleton<Game>
         {
             CurrentScore++;
         }
+        CheckScoreAndTriggerProgress();
         OnScoreChanged?.Invoke();
+    }
+
+    private void CheckScoreAndTriggerProgress()
+    {
+        if ((CurrentScore % progressAfterScore == 0) && CurrentScore != 0)
+        {
+            Spawner.GetInstance().IncreaseProgressMultiplier();
+        }
     }
 
     public void RealItemMissed()

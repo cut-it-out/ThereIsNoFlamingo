@@ -14,6 +14,8 @@ public class Player : RealViewAffectedObject
     [SerializeField] float paddingLeft;
     [SerializeField] float paddingRight;
 
+    private const float PLAYER_SPEED_MULTIPLIER = 2; // times the falling object current speed
+
     private Vector2 minBounds;
     private Vector2 maxBounds;
 
@@ -41,7 +43,14 @@ public class Player : RealViewAffectedObject
         base.OnEnable();
         // subscribe for movement
         inputManager.OnMovement += InputManager_OnMovement;
+        Spawner.GetInstance().OnProgressMultiplierChange += Player_OnProgressMultiplierChange;
     }
+
+    private void Player_OnProgressMultiplierChange(float newSpeed)
+    {
+        playerSpeed = newSpeed * PLAYER_SPEED_MULTIPLIER;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         FallingObject fallingObject = collision.gameObject.GetComponent<FallingObject>();

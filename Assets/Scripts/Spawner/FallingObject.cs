@@ -10,7 +10,7 @@ public class FallingObject : RealViewAffectedObject
 
     private float movementSpeed;
 
-    public static FallingObject Create(Transform prefabTransform, Vector3 worldPosition, float speed, bool isReal, bool showRealSprite)
+    public static FallingObject Create(Transform prefabTransform, Vector3 worldPosition, float speed, bool isReal)
     {
         Transform fallingObjTransform = Instantiate(prefabTransform, worldPosition, Quaternion.identity);
 
@@ -19,7 +19,7 @@ public class FallingObject : RealViewAffectedObject
         fallingObject.movementSpeed = speed;
         fallingObject.SetIsReal(isReal);
 
-        fallingObject.ShowRealSprite(showRealSprite);
+        fallingObject.ShowRealSprite(Game.GetInstance().IsRealViewEnabled);
 
         return fallingObject;
     }
@@ -47,7 +47,18 @@ public class FallingObject : RealViewAffectedObject
     public override void DestroySelf()
     {
         Spawner.GetInstance().RemoveFallingObject(this);
+        Spawner.GetInstance().OnProgressMultiplierChange -= FallingObject_OnProgressMultiplierChange;
         base.DestroySelf();
     }
 
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        Spawner.GetInstance().OnProgressMultiplierChange += FallingObject_OnProgressMultiplierChange;
+    }
+
+    private void FallingObject_OnProgressMultiplierChange(float newSpeed)
+    {
+        movementSpeed = newSpeed;
+    }
 }
