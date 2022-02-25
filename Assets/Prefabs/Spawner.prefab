@@ -139,11 +139,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnZonePos: {fileID: 1990747757501026781}
-  spawnInterval: 2
-  prefabToSpawn: {fileID: 1358164412274691944, guid: 9f76f65e43294c34693a257d99a5d97d, type: 3}
-  fallingSpeed: 4
+  initialSpawnInterval: 1.7
+  initialFallingSpeed: 5
+  speedIncrementValue: 0.5
+  spawnIntervalIncrementValue: -0.1
+  maxProgressMultiplier: 10
+  prefabToSpawn: {fileID: 1358164412274691944, guid: 1f2fba93cfa151949b472b2b0fea3426, type: 3}
   minItemsPerRow: 3
   maxItemsPerRow: 6
+  verticalVariance: 1
 --- !u!1 &1990747757501026770
 GameObject:
   m_ObjectHideFlags: 0

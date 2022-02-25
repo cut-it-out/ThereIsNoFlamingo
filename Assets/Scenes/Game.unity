@@ -1294,24 +1294,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1990747757136457390, guid: 4fe265b76ee1dc44a801ad6c282beebd, type: 3}
-      propertyPath: prefabToSpawn
-      value: 
-      objectReference: {fileID: 1358164412274691944, guid: 1f2fba93cfa151949b472b2b0fea3426, type: 3}
-    - target: {fileID: 1990747757136457390, guid: 4fe265b76ee1dc44a801ad6c282beebd, type: 3}
-      propertyPath: spawnInterval
-      value: 1.7
-      objectReference: {fileID: 0}
-    - target: {fileID: 1990747757136457390, guid: 4fe265b76ee1dc44a801ad6c282beebd, type: 3}
-      propertyPath: initialFallingSpeed
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1990747757136457390, guid: 4fe265b76ee1dc44a801ad6c282beebd, type: 3}
-      propertyPath: speedIncrementValue
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1990747757136457390, guid: 4fe265b76ee1dc44a801ad6c282beebd, type: 3}
-      propertyPath: spawnIntervalIncrementValue
-      value: -0.1
+      propertyPath: verticalVariance
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1990747757136457391, guid: 4fe265b76ee1dc44a801ad6c282beebd, type: 3}
       propertyPath: m_Name

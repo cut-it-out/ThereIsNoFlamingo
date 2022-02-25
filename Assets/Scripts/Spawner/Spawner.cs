@@ -15,12 +15,13 @@ public class Spawner : Singleton<Spawner>
     [SerializeField] float initialFallingSpeed = 2f;
     [SerializeField] float speedIncrementValue = 0.1f;
     [SerializeField] float spawnIntervalIncrementValue = -0.1f;
-    [SerializeField] float maxProgressMultiplier = 5f;
+    [SerializeField] float maxProgressMultiplier = 10f;
 
     [Header("Spawner Input")]
     [SerializeField] GameObject prefabToSpawn;
     [SerializeField] int minItemsPerRow = 3;
     [SerializeField] int maxItemsPerRow = 6;
+    [SerializeField] float verticalVariance = 1f;
 
     List<FallingObject> fallingObjects = new List<FallingObject>();
 
@@ -106,8 +107,17 @@ public class Spawner : Singleton<Spawner>
                 isReal = true;
             }
 
-            FallingObject newFallingObject = 
-                Spawn(new Vector2(minSpawnX + (spawnDistance / 2) + i * spawnDistance, spawnZonePos.transform.position.y), isReal);
+            float spawnPosX = minSpawnX + (spawnDistance / 2) + i * spawnDistance;
+
+            float spawnPosY = UnityEngine.Random.Range(
+                spawnZonePos.transform.position.y - (verticalVariance / 2), 
+                spawnZonePos.transform.position.y + (verticalVariance / 2));
+
+            Vector2 spawnPos = new Vector2(
+                spawnPosX,
+                spawnPosY);
+
+            FallingObject newFallingObject = Spawn(spawnPos, isReal);
 
             fallingObjects.Add(newFallingObject);
             
@@ -141,6 +151,8 @@ public class Spawner : Singleton<Spawner>
 
     public void IncreaseProgressMultiplier(float incrementValue = 1f)
     {
+        if (progressMultiplier == maxProgressMultiplier) return;
+
         progressMultiplier += incrementValue;
         UpdateFallingSpeedAndSpawnInterval();
         Debug.Log($"The Game just got harder, setting multiplier to {progressMultiplier}");
