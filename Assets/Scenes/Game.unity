@@ -985,7 +985,7 @@ SpriteRenderer:
   m_Size: {x: 19.2, y: 10.8}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1616787752
@@ -1312,7 +1312,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 347005783358018263, guid: 716db3f8022965341a2690f11b251bc3, type: 3}
       propertyPath: fuelToTimeExchangeRate
-      value: 3
+      value: 3.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 347005783358018263, guid: 716db3f8022965341a2690f11b251bc3, type: 3}
+      propertyPath: visualFeedbackInterval
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 347005783358018263, guid: 716db3f8022965341a2690f11b251bc3, type: 3}
       propertyPath: lifeLostFeedbackInterval

@@ -132,6 +132,8 @@ public class Spawner : Singleton<Spawner>
             isReal);
     }
 
+    public float GetProgressMultiplier() => progressMultiplier;
+
     public void RemoveFallingObject(FallingObject fallingObj)
     {
         fallingObjects.Remove(fallingObj);

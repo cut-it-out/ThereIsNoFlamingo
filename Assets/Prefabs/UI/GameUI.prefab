@@ -30,11 +30,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8884070642381245029}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -332.8, y: -350}
+  m_AnchoredPosition: {x: -332.8, y: -360.25}
   m_SizeDelta: {x: 500, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3807702956138743481
@@ -281,6 +281,7 @@ GameObject:
   - component: {fileID: 6855144014246508575}
   - component: {fileID: 4212396491469841218}
   - component: {fileID: 1485941053711374060}
+  - component: {fileID: 1143022331651233541}
   m_Layer: 5
   m_Name: GameUI
   m_TagString: Untagged
@@ -301,8 +302,8 @@ RectTransform:
   m_Children:
   - {fileID: 5627102100126654969}
   - {fileID: 3536031651655711526}
-  - {fileID: 3772284173238074178}
   - {fileID: 7701876071018471289}
+  - {fileID: 3772284173238074178}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -375,6 +376,19 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &1143022331651233541
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8884070642381245028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5296a0c92944c2419c79dd6d1ed79a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelText: {fileID: 6934702607064105198}
 --- !u!1001 &5008528212366744876
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -396,7 +410,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8203312937818564206, guid: f00d20cf0df31d14994179d94b2732cb, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8203312937818564206, guid: f00d20cf0df31d14994179d94b2732cb, type: 3}
       propertyPath: m_AnchorMax.x
