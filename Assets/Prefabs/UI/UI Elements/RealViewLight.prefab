@@ -234,11 +234,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8203312937818564206}
-  - component: {fileID: 8699080692734798012}
+  - component: {fileID: 2601501259438357126}
   - component: {fileID: 1153938873}
   - component: {fileID: 1153938872}
   m_Layer: 5
-  m_Name: SenseLight
+  m_Name: RealViewLight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -266,7 +266,7 @@ RectTransform:
   m_AnchoredPosition: {x: 136, y: 186}
   m_SizeDelta: {x: 250, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8699080692734798012
+--- !u!114 &2601501259438357126
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -275,12 +275,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7462182802457390501}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0fd81129f7f9357439ccfbb2820aace6, type: 3}
+  m_Script: {fileID: 11500000, guid: 9e91085f4d06f6d418f7f70d08d6365d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  glowImage: {fileID: 5346469172472596045}
   fillImage: {fileID: 6692770985985693760}
-  isThisTheLeftSenseLight: 1
 --- !u!114 &1153938873
 MonoBehaviour:
   m_ObjectHideFlags: 0

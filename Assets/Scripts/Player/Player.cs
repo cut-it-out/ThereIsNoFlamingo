@@ -18,19 +18,22 @@ public class Player : RealViewAffectedObject
 
     private Vector2 minBounds;
     private Vector2 maxBounds;
+    private Vector2 movingDirection;
 
+    // cached variables
+    private Game game;
     private InputManager inputManager;
     private Camera mainCamera;
-    private Vector2 movingDirection;
 
     private void Awake()
     {
+        game = Game.GetInstance();
         inputManager = InputManager.GetInstance();
         mainCamera = Camera.main;
         InitBounds();
         SetIsReal(true); // to make sure player obj is visible in REAL view
         ResetPlayerPositionToStart();
-        Game.GetInstance().AdjustNotCatchedCheckZone(playerYPosition);
+        //Game.GetInstance().AdjustNotCatchedCheckZone(playerYPosition);
     }
 
     public void ResetPlayerPositionToStart()
@@ -57,13 +60,19 @@ public class Player : RealViewAffectedObject
         if (fallingObject != null && fallingObject.IsRealObject)
         {
             //catched the REAL one
-            Game.GetInstance().IncreaseCurrentScore();
+            game.IncreaseCurrentScore();
+            game.UpdateFuelContainer(fallingObject.GetFuelGain());
             //TODO: add some nice effect to visualize correct catch :)
             fallingObject.DestroySelf();
         }
         else
         {
             // catched the WRONG one
+            if (!game.IsRealViewEnabled)
+            {
+                game.UpdateFuelContainer(-fallingObject.GetFuelLost());
+                fallingObject.DestroySelf();
+            }
         }
     }
 

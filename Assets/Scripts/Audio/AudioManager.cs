@@ -24,12 +24,12 @@ public class AudioManager : Singleton<AudioManager>
         IsMusicEnabled = true;
         IsEffectEnabled = true;
 
-        Game.GetInstance().OnRealViewToggle += Audio_OnRealViewToggle;
+        Game.GetInstance().OnRealViewToggle += AudioManager_OnRealViewToggle;
     }
 
-    private void Audio_OnRealViewToggle(object sender, Game.RealViewEventArgs e)
+    private void AudioManager_OnRealViewToggle(bool value)
     {
-        EnableMusicEffect(e.isRealViewActive);
+        EnableMusicEffect(value);
     }
 
     private void EnableMusicEffect(bool value)

@@ -1172,8 +1172,16 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 9173132882953404218, guid: bc061eb36f8924f49ae725a888b4cee1, type: 3}
+      propertyPath: realSprite
+      value: 
+      objectReference: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+    - target: {fileID: 9173132882953404218, guid: bc061eb36f8924f49ae725a888b4cee1, type: 3}
       propertyPath: playerSpeed
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 9173132882953404218, guid: bc061eb36f8924f49ae725a888b4cee1, type: 3}
+      propertyPath: paddingRight
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 9173132882953404218, guid: bc061eb36f8924f49ae725a888b4cee1, type: 3}
       propertyPath: playerYPosition
@@ -1206,6 +1214,10 @@ PrefabInstance:
       objectReference: {fileID: 536341930}
     - target: {fileID: 347005783358018263, guid: 716db3f8022965341a2690f11b251bc3, type: 3}
       propertyPath: initialLifeCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 347005783358018263, guid: 716db3f8022965341a2690f11b251bc3, type: 3}
+      propertyPath: fuelToTimeExchangeRate
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 347005783358018263, guid: 716db3f8022965341a2690f11b251bc3, type: 3}
@@ -1265,6 +1277,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 536341930, guid: 4fe265b76ee1dc44a801ad6c282beebd, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 536341934, guid: 4fe265b76ee1dc44a801ad6c282beebd, type: 3}
       propertyPath: m_Size.x
       value: 55

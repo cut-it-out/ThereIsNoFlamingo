@@ -4,9 +4,13 @@ using UnityEngine;
 
 public class FallingObject : RealViewAffectedObject
 {
-    [Header("Falling Object Settings")]    
+    [Header("Falling Object Settings")]
     [SerializeField] float paddingLeft;
-    [SerializeField] float paddingRight;    
+    [SerializeField] float paddingRight;
+
+    [Header("RealView Fuel settings")]
+    [SerializeField] float fuelGainOnRealCatch;
+    [SerializeField] float fuelLostOnNotRealCatched;
 
     private float movementSpeed;
 
@@ -24,8 +28,8 @@ public class FallingObject : RealViewAffectedObject
         return fallingObject;
     }
 
-    // TODO: handle collision with player / schedder
-
+    public float GetFuelGain() => fuelGainOnRealCatch;
+    public float GetFuelLost() => fuelLostOnNotRealCatched;
 
     private void Update()
     {

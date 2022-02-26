@@ -12,7 +12,7 @@ public class RealViewAffectedObject : MonoBehaviour
 
     protected virtual void OnEnable()
     {
-        Game.GetInstance().OnRealViewToggle += Object_OnRealViewToggle;
+        Game.GetInstance().OnRealViewToggle += RealViewObject_OnRealViewToggle;
     }
 
     //protected virtual void OnDisable()
@@ -20,9 +20,9 @@ public class RealViewAffectedObject : MonoBehaviour
     //    Game.GetInstance().OnRealViewToggle -= Player_OnRealViewToggle;
     //}
 
-    private void Object_OnRealViewToggle(object sender, Game.RealViewEventArgs e)
+    private void RealViewObject_OnRealViewToggle(bool value)
     {
-        ShowRealSprite(e.isRealViewActive);
+        ShowRealSprite(value);
     }
 
     public void ShowRealSprite(bool showReal = true)
@@ -38,7 +38,8 @@ public class RealViewAffectedObject : MonoBehaviour
 
     public virtual void DestroySelf()
     {
-        Game.GetInstance().OnRealViewToggle -= Object_OnRealViewToggle;
+        Game.GetInstance().OnRealViewToggle -= RealViewObject_OnRealViewToggle;
         Destroy(gameObject);
+        // TODO: Add animation/effect 
     }
 }

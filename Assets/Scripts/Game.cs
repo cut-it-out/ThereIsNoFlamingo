@@ -8,53 +8,56 @@ using UnityEngine.Rendering.Universal;
 public class Game : Singleton<Game>
 {
 
-    [Header("Real View times")]
-    [SerializeField] private float realViewEnabledInterval = 3f;
-    [SerializeField] private float realViewCooldownInterval = 10f;
+    [Header("RealView Fuel Settings")]
+    [SerializeField] private float fuelContainerMax = 60f;
+    [SerializeField] private float fuelInitialValue = 30f;
+    [SerializeField] private float fuelToTimeExchangeRate = 1f; //in seconds, so 10 fuel = 10 seconds
+
+    [Header("Visual Feedback related")]
+    [SerializeField] private float visualFeedbackInterval = 1f;
     [SerializeField] private Volume globalVolume;
 
-    [Header("Lifes related")]
-    [SerializeField] private int initialLifeCount = 3;
-    [SerializeField] private float lifeLostFeedbackInterval = 1f;
-    [SerializeField] private float feebackShakeIntensity = 2f;
+    //[Header("Progress related")]
+    //[SerializeField] private int progressAfterScore = 5;
 
-    [Header("Progress related")]
-    [SerializeField] private int progressAfterScore = 5;
-
-    [Header("NotCatchedZone")]
-    [SerializeField] private GameObject notCatchedZone;
+    //[Header("NotCatchedZone")]
+    //[SerializeField] private GameObject notCatchedZone;
 
     [Header("Player object")]
     [SerializeField] Player player; //to easily reset player position
 
     // Game related
     public bool IsPaused { get; private set; }
-    public int PlayerLife { get; private set; }
+    //public int PlayerLife { get; private set; }
     public int CurrentScore { get; private set; }
+    public float CurrentFuel { get; private set; }
+    public float MaxFuel { get; private set; }
     public bool IsGameOver { get; private set; } = true;
     //public bool IsIntroStillRunning { get; private set; } = false;
 
+    #region Events
 
-    // score change event
     public delegate void ScoreChanged();
     public event ScoreChanged OnScoreChanged;
 
+    public delegate void FuelChanged();
+    public event FuelChanged OnFuelChanged;
+
+    public delegate void RealViewToggle(bool value);
+    public event RealViewToggle OnRealViewToggle;
+    
+    #endregion
+
+
     // RealView event
-    public event EventHandler<RealViewEventArgs> OnRealViewToggle;
-    public class RealViewEventArgs : EventArgs
-    {
-        public bool isRealViewActive;
-    }
+    //public event EventHandler<RealViewEventArgs> OnRealViewToggle;
+    //public class RealViewEventArgs : EventArgs
+    //{
+    //    public bool isRealViewActive;
+    //}
 
     // RealView related variables
     public bool IsRealViewEnabled { get; private set; }
-    public bool IsRealViewInCooldown { get; private set; }
-    public float RealViewEnabledFill { get; private set; }
-    public float RealViewCooldownFill { get; private set; }
-
-    private float realViewEnabledTimer;
-    private float realViewCooldownTimer;
-    private Coroutine realViewActiveCR, realViewInCooldownCR;
 
     // cached vars
     private Bloom bloomComponent;
@@ -76,6 +79,9 @@ public class Game : Singleton<Game>
         //IsGameOver = true;
         UpdateScore(true);
 
+        // set fuel container values to initial value
+        InitFuelContainer();
+
     }
 
     // Start is called before the first frame update
@@ -95,14 +101,14 @@ public class Game : Singleton<Game>
     void Update()
     {
         // handle RealView timer updates
-        HandleRealViewPublicTimers();
+        HandleFuelUsageInRealView();
     }
 
     private void InputManager_OnRealViewKeyPressed()
     {
         if (!IsGameOver && !IsPaused)
         {
-            EnableRealView();
+            ToggleRealView();
         }
     }
 
@@ -124,85 +130,11 @@ public class Game : Singleton<Game>
         }
     }
 
-    public void AdjustNotCatchedCheckZone(float playerY)
-    {
-        notCatchedZone.GetComponent<NotCatchedZone>().AdjustPositionToPlayerY(playerY);
-    }
+    //public void AdjustNotCatchedCheckZone(float playerY)
+    //{
+    //    notCatchedZone.GetComponent<NotCatchedZone>().AdjustPositionToPlayerY(playerY);
+    //}
 
-    #region Life, highscore related stuff
-
-    public void IncreaseCurrentScore()
-    {
-        UpdateScore();
-        StartCoroutine(DisplayPositiveFeedback());
-    }
-
-    private void UpdateScore(bool resetScore = false)
-    {
-        if (resetScore)
-        {
-            CurrentScore = 0;
-        }
-        else
-        {
-            CurrentScore++;
-        }
-        CheckScoreAndTriggerProgress();
-        OnScoreChanged?.Invoke();
-    }
-
-    private void CheckScoreAndTriggerProgress()
-    {
-        if ((CurrentScore % progressAfterScore == 0) && CurrentScore != 0)
-        {
-            Spawner.GetInstance().IncreaseProgressMultiplier();
-        }
-    }
-
-    public void RealItemMissed()
-    {
-        UpdatePlayerLife(-1);
-        StartCoroutine(DisplayLifeLostFeedback());
-    }
-
-    private void UpdatePlayerLife(int value)
-    {
-        if (PlayerLife + value <= 0)
-        {
-            PlayerLife = 0;
-            GameOver();
-        }
-        else
-        {
-            PlayerLife += value;
-        }
-    }
-    IEnumerator DisplayLifeLostFeedback()
-    {
-        AudioManager.GetInstance().PlayDamageSound();
-        canvasManager.ActivateCanvas(CanvasType.LifeLostFeedbackScreen, true);
-        yield return new WaitForSeconds(lifeLostFeedbackInterval);
-        canvasManager.ActivateCanvas(CanvasType.LifeLostFeedbackScreen, false);
-    }
-
-    IEnumerator DisplayPositiveFeedback()
-    {
-        AudioManager.GetInstance().PlayPositiveFeedbackSound();
-        canvasManager.ActivateCanvas(CanvasType.PositiveFeedbackScreen, true);
-        yield return new WaitForSeconds(lifeLostFeedbackInterval);
-        canvasManager.ActivateCanvas(CanvasType.PositiveFeedbackScreen, false);
-    }
-
-    //public float GetLifeLostFeedbackInterval() => lifeLostFeedbackInterval;
-    //public float GetFeebackShakeIntensity() => feebackShakeIntensity;
-
-    private void InitPlayerLife()
-    {
-        PlayerLife = initialLifeCount;
-    }
-    public int GetInitialLifeCount() => initialLifeCount;
-
-    #endregion
 
 
     #region Basic Game Stuff (start, reset, pause, etc)
@@ -211,9 +143,9 @@ public class Game : Singleton<Game>
     {        
         IsGameOver = false;
         UpdateScore(true);
+        SetRealView(false); // Reset RealView For Start
+        InitFuelContainer();
         player.ResetPlayerPositionToStart();
-        InitPlayerLife();
-        ResetRealViewForStart();
         Spawner.GetInstance().InitSpawner();
         ResumeGame(); // to make sure we don't stuck in pause
 
@@ -242,7 +174,7 @@ public class Game : Singleton<Game>
 
         StopGame();
 
-        StartCoroutine(DisplayLifeLostFeedback());
+        //StartCoroutine(DisplayLifeLostFeedback()); // already handled previously
         //canvasManager.SwitchCanvas(CanvasType.YouDiedSplashScreen);
         canvasManager.SwitchCanvas(CanvasType.GameOver);
 
@@ -263,107 +195,124 @@ public class Game : Singleton<Game>
 
     #endregion
 
+    #region Score related functions
 
-    #region RealView Functions
-
-    public float GetRealViewEnabledIntervalTotal() => realViewEnabledInterval;
-    public float GetRealViewCooldownIntervalTotal() => realViewCooldownInterval;
-
-    private void ResetRealViewForStart()
+    public void IncreaseCurrentScore()
     {
-        if (realViewActiveCR != null)
-        {
-            StopCoroutine(realViewActiveCR);
-            DeactivateRealViewCounter();
-        }
-
-        if (realViewInCooldownCR != null)
-        {
-            StopCoroutine(realViewInCooldownCR);
-            IsRealViewInCooldown = false;
-            realViewInCooldownCR = null;
-        }
+        UpdateScore();
+        //StartCoroutine(DisplayPositiveFeedback());
     }
 
-    private void HandleRealViewPublicTimers()
+    private void UpdateScore(bool resetScore = false)
     {
-        if (IsRealViewEnabled)
+        if (resetScore)
         {
-            realViewEnabledTimer -= Time.deltaTime;
-            RealViewEnabledFill = realViewEnabledTimer / realViewEnabledInterval;
+            CurrentScore = 0;
         }
         else
         {
-            realViewEnabledTimer = realViewEnabledInterval;
-            if (!IsRealViewInCooldown)
-            {
-                RealViewEnabledFill = 1f;
-
-                realViewCooldownTimer = 0f;
-                RealViewCooldownFill = 0f;
-            }
-            else
-            {
-                RealViewEnabledFill = 0f;
-
-                realViewCooldownTimer += Time.deltaTime;
-                RealViewCooldownFill = realViewCooldownTimer / realViewCooldownInterval;
-            }
+            CurrentScore++;
         }
+        OnScoreChanged?.Invoke();
     }
 
-    public void EnableRealView()
+    #endregion
+
+    #region Feedback coroutines
+
+    IEnumerator DisplayLifeLostFeedback()
     {
-        if (!IsRealViewEnabled && !IsRealViewInCooldown)
+        AudioManager.GetInstance().PlayDamageSound();
+        canvasManager.ActivateCanvas(CanvasType.LifeLostFeedbackScreen, true);
+        yield return new WaitForSeconds(visualFeedbackInterval);
+        canvasManager.ActivateCanvas(CanvasType.LifeLostFeedbackScreen, false);
+    }
+
+    IEnumerator DisplayPositiveFeedback()
+    {
+        AudioManager.GetInstance().PlayPositiveFeedbackSound();
+        canvasManager.ActivateCanvas(CanvasType.PositiveFeedbackScreen, true);
+        yield return new WaitForSeconds(visualFeedbackInterval);
+        canvasManager.ActivateCanvas(CanvasType.PositiveFeedbackScreen, false);
+    }
+
+    #endregion
+
+
+    #region Fuel and RealView Functions
+
+    public void UpdateFuelContainer(float value = 0f)
+    {
+        Debug.Log($"UpdateFuelContainer - value: {value}");
+
+        float newFuelValue = CurrentFuel + value;
+
+        if (newFuelValue <= 0f)
         {
-            if (realViewActiveCR == null) //making sure not to start several CR
-            {
-                realViewActiveCR = StartCoroutine(RealViewCounter());
-            }
+            //Game Over
+            newFuelValue = 0f;
+
         }
-
-    }
-
-    IEnumerator RealViewCounter()
-    {
-        ActivateRealViewCounter();
-
-        yield return new WaitForSeconds(realViewEnabledInterval);
-
-        DeactivateRealViewCounter();
-
-        // start cooldown
-        if (realViewInCooldownCR == null) //making sure not to start several CR
+        else if (newFuelValue > fuelContainerMax)
         {
-            realViewInCooldownCR = StartCoroutine(RealViewCooldownCounter());
+            //progress to next stage
+            // TODO: trigger some nice effect???
+            newFuelValue = fuelInitialValue;
+            Spawner.GetInstance().IncreaseProgressMultiplier();
+        }
+        
+        CurrentFuel = newFuelValue;
+
+        if (value < -1f)
+        {
+            StartCoroutine(DisplayLifeLostFeedback());
+        }
+        else if (value > 0f)
+        {
+            StartCoroutine(DisplayPositiveFeedback());
+        }
+
+        Debug.Log($"UpdateFuelContainer - game.MaxFuel: {MaxFuel}");
+        Debug.Log($"UpdateFuelContainer - game.CurrentFuel: {CurrentFuel}");
+
+        // Trigger related event
+        OnFuelChanged?.Invoke();
+
+        if (CurrentFuel == 0f) GameOver();
+
+    }
+
+    private void InitFuelContainer()
+    {
+        CurrentFuel = fuelInitialValue;
+        MaxFuel = fuelContainerMax;
+        OnFuelChanged?.Invoke();
+    }
+
+    private void HandleFuelUsageInRealView()
+    {
+        if (IsRealViewEnabled)
+        {
+            UpdateFuelContainer(-(Time.deltaTime * fuelToTimeExchangeRate));
+        }
+        else
+        {
+            // if RealView is not active
+            // TODO: do I want to slowly decrease the fuel?
         }
     }
 
-    private void ActivateRealViewCounter()
+    private void ToggleRealView()
     {
-        IsRealViewEnabled = true;
-        // invoke event
-        OnRealViewToggle?.Invoke(this, new RealViewEventArgs() { isRealViewActive = true });
-        //bloomComponent.active = true;
+        SetRealView(!IsRealViewEnabled);                
     }
 
-    private void DeactivateRealViewCounter()
+    private void SetRealView(bool value)
     {
-        IsRealViewEnabled = false;
-        realViewActiveCR = null;
-        // invoke event
-        OnRealViewToggle?.Invoke(this, new RealViewEventArgs() { isRealViewActive = false });
-        //bloomComponent.active = false;
+        IsRealViewEnabled = value; 
+        OnRealViewToggle?.Invoke(IsRealViewEnabled);
     }
 
-    IEnumerator RealViewCooldownCounter()
-    {
-        IsRealViewInCooldown = true;
-        yield return new WaitForSeconds(realViewCooldownInterval);
-        IsRealViewInCooldown = false;
-        realViewInCooldownCR = null;
-
-    }
 
     #endregion
 }

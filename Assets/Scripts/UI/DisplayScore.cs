@@ -10,20 +10,20 @@ public class DisplayScore : MonoBehaviour
     private void Awake()
     {
         game = Game.GetInstance();
-        DisplayScore_OnScoreChanged();
+        Game_OnScoreChanged();
     }
 
     private void OnEnable()
     {
-        game.OnScoreChanged += DisplayScore_OnScoreChanged;
-        DisplayScore_OnScoreChanged();
+        game.OnScoreChanged += Game_OnScoreChanged;
+        Game_OnScoreChanged();
     }
     private void OnDisable()
     {
-        game.OnScoreChanged -= DisplayScore_OnScoreChanged;
+        game.OnScoreChanged -= Game_OnScoreChanged;
     }
 
-    private void DisplayScore_OnScoreChanged()
+    private void Game_OnScoreChanged()
     {
         scoreText.text = game.CurrentScore.ToString();
     }

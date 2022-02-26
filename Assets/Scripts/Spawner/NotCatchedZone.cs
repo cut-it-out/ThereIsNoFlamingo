@@ -5,17 +5,17 @@ using UnityEngine;
 public class NotCatchedZone : MonoBehaviour
 {
 
-    public void AdjustPositionToPlayerY(float playerY)
-    {
-        transform.position = new Vector2(transform.position.x, playerY);
-    }
+    //public void AdjustPositionToPlayerY(float playerY)
+    //{
+    //    transform.position = new Vector2(transform.position.x, playerY);
+    //}
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        FallingObject fallingObject = collision.gameObject.GetComponent<FallingObject>();
-        if (fallingObject != null && fallingObject.IsRealObject)
-        {
-            Game.GetInstance().RealItemMissed();
-        }
-    }
+    //private void OnTriggerEnter2D(Collider2D collision)
+    //{
+    //    FallingObject fallingObject = collision.gameObject.GetComponent<FallingObject>();
+    //    if (fallingObject != null && fallingObject.IsRealObject)
+    //    {
+    //        Game.GetInstance().RealItemMissed();
+    //    }
+    //}
 }

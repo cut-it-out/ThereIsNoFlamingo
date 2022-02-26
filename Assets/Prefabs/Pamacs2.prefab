@@ -133,6 +133,8 @@ MonoBehaviour:
   objMeshWithSpriteRenderer: {fileID: 1358164411854517545}
   paddingLeft: 0.5
   paddingRight: 0.5
+  fuelGainOnRealCatch: 5
+  fuelLostOnNotRealCatched: 5
 --- !u!50 &18936413591654106
 Rigidbody2D:
   serializedVersion: 4
