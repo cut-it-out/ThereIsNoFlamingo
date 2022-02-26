@@ -34,7 +34,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -332.8, y: -360.25}
+  m_AnchoredPosition: {x: -332.8, y: -383}
   m_SizeDelta: {x: 500, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3807702956138743481
@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Level: 0'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: edfa0244205dea2428acd72c6a6865cc, type: 2}
-  m_sharedMaterial: {fileID: 2566753501191623994, guid: edfa0244205dea2428acd72c6a6865cc, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 706124b8ad9110d4ab251486e0c316a8, type: 2}
+  m_sharedMaterial: {fileID: -1324832136550578864, guid: 706124b8ad9110d4ab251486e0c316a8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -92,8 +92,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 135
-  m_fontSizeBase: 135
+  m_fontSize: 160
+  m_fontSizeBase: 160
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -201,8 +201,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 123
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: edfa0244205dea2428acd72c6a6865cc, type: 2}
-  m_sharedMaterial: {fileID: 2566753501191623994, guid: edfa0244205dea2428acd72c6a6865cc, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 706124b8ad9110d4ab251486e0c316a8, type: 2}
+  m_sharedMaterial: {fileID: -1324832136550578864, guid: 706124b8ad9110d4ab251486e0c316a8, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -226,8 +226,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 135
-  m_fontSizeBase: 135
+  m_fontSize: 160
+  m_fontSizeBase: 160
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -288,7 +288,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8884070642381245029
 RectTransform:
   m_ObjectHideFlags: 0
@@ -592,7 +592,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8802984093714187881, guid: 93938169254658e47b1037f211838620, type: 3}
       propertyPath: m_text
-      value: Pause / Settings
+      value: PAUSE GAME
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 93938169254658e47b1037f211838620, type: 3}
