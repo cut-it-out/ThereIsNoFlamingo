@@ -10,7 +10,9 @@ public class Spawner : Singleton<Spawner>
 
 
     [Header("Spawner Settings")]
-    [SerializeField] Transform spawnZonePos;
+    [SerializeField] Transform spawnZoneXMinPos;
+    [SerializeField] Transform spawnZoneXMaxPos;
+    [SerializeField] Transform spawnZoneYPos;
     [SerializeField] float initialSpawnInterval = 1.7f;
     [SerializeField] float initialFallingSpeed = 2f;
     [SerializeField] float speedIncrementValue = 0.1f;
@@ -25,15 +27,13 @@ public class Spawner : Singleton<Spawner>
 
     List<FallingObject> fallingObjects = new List<FallingObject>();
 
-    private Vector2 minBounds;
-    private Vector2 maxBounds;
-
     private float spawnInterval;
     private float fallingSpeed;
     private float progressMultiplier = 0f;
 
     private float minSpawnX;
     private float maxSpawnX;
+    private float spawnLineDistance;
 
     private Coroutine spawnerCR;
 
@@ -43,7 +43,17 @@ public class Spawner : Singleton<Spawner>
     private void Start()
     {
         mainCamera = Camera.main;
-        InitBounds();
+
+        // set min & max X pos
+        minSpawnX = spawnZoneXMinPos.transform.position.x;
+        maxSpawnX = spawnZoneXMaxPos.transform.position.x;
+                
+        // calculate distance to place objects same distance from each other
+        spawnLineDistance = Vector2.Distance(spawnZoneXMinPos.transform.position, spawnZoneXMaxPos.transform.position);
+
+        // trigger player move speed update
+        OnProgressMultiplierChange?.Invoke(initialFallingSpeed);
+
         UpdateFallingSpeedAndSpawnInterval();
 
     }
@@ -69,25 +79,13 @@ public class Spawner : Singleton<Spawner>
         }
     }
 
-    private void InitBounds()
-    {
-        minBounds = mainCamera.ViewportToWorldPoint(new Vector2(0, 0));
-        maxBounds = mainCamera.ViewportToWorldPoint(new Vector2(1, 0)); // stay on bottom line
-    }
-
     private void SpawnRow(int nbrOfItemsToSpawn)
     {
         FallingObject fallingObj = prefabToSpawn.GetComponent<FallingObject>();
         fallingObj.GetPadding(out float objPaddingLeft, out float objPaddingRight);
 
-        // set min & max X pos
-        minSpawnX = minBounds.x ;
-        maxSpawnX = maxBounds.x ;
-
         // TODO: add variance to available spawnLineDistance (have items more concentrated in middle)
 
-        // calculate distance to place objects same distance from each other
-        float spawnLineDistance = Vector2.Distance(minBounds, maxBounds);
         float spawnDistance = spawnLineDistance / nbrOfItemsToSpawn;
 
         if (spawnLineDistance < nbrOfItemsToSpawn * (objPaddingLeft + objPaddingRight))
@@ -110,8 +108,8 @@ public class Spawner : Singleton<Spawner>
             float spawnPosX = minSpawnX + (spawnDistance / 2) + i * spawnDistance;
 
             float spawnPosY = UnityEngine.Random.Range(
-                spawnZonePos.transform.position.y - (verticalVariance / 2), 
-                spawnZonePos.transform.position.y + (verticalVariance / 2));
+                spawnZoneYPos.transform.position.y - (verticalVariance / 2), 
+                spawnZoneYPos.transform.position.y + (verticalVariance / 2));
 
             Vector2 spawnPos = new Vector2(
                 spawnPosX,

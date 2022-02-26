@@ -6,7 +6,6 @@ using UnityEngine;
 public class Player : RealViewAffectedObject
 {
     [Header("Player Movement")]
-    [SerializeField] float playerSpeed = 10f;
     [SerializeField] float playerXPosition = 0f;
     [SerializeField] float playerYPosition = -12f;
 
@@ -14,7 +13,8 @@ public class Player : RealViewAffectedObject
     [SerializeField] float paddingLeft;
     [SerializeField] float paddingRight;
 
-    private const float PLAYER_SPEED_MULTIPLIER = 2; // times the falling object current speed
+    float playerSpeed;
+    private const float PLAYER_SPEED_MULTIPLIER = 3.5f; // times the falling object current speed
 
     private Vector2 minBounds;
     private Vector2 maxBounds;
