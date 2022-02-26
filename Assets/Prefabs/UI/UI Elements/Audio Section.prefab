@@ -287,6 +287,22 @@ PrefabInstance:
       propertyPath: m_text
       value: Effect
       objectReference: {fileID: 0}
+    - target: {fileID: 2768647031041682549, guid: 93c5009717eeffc48bcdb5ca4f5ff57e, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2768647031041682549, guid: 93c5009717eeffc48bcdb5ca4f5ff57e, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2768647031041682549, guid: 93c5009717eeffc48bcdb5ca4f5ff57e, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2768647031041682549, guid: 93c5009717eeffc48bcdb5ca4f5ff57e, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
+      objectReference: {fileID: 0}
     - target: {fileID: 2768647031316955229, guid: 93c5009717eeffc48bcdb5ca4f5ff57e, type: 3}
       propertyPath: m_Name
       value: Effect Slider Container
@@ -416,6 +432,22 @@ PrefabInstance:
     - target: {fileID: 2768647031041682549, guid: 93c5009717eeffc48bcdb5ca4f5ff57e, type: 3}
       propertyPath: m_text
       value: Music
+      objectReference: {fileID: 0}
+    - target: {fileID: 2768647031041682549, guid: 93c5009717eeffc48bcdb5ca4f5ff57e, type: 3}
+      propertyPath: m_fontColor.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2768647031041682549, guid: 93c5009717eeffc48bcdb5ca4f5ff57e, type: 3}
+      propertyPath: m_fontColor.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2768647031041682549, guid: 93c5009717eeffc48bcdb5ca4f5ff57e, type: 3}
+      propertyPath: m_fontColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2768647031041682549, guid: 93c5009717eeffc48bcdb5ca4f5ff57e, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4278190080
       objectReference: {fileID: 0}
     - target: {fileID: 2768647031316955229, guid: 93c5009717eeffc48bcdb5ca4f5ff57e, type: 3}
       propertyPath: m_Name
