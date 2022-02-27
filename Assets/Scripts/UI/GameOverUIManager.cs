@@ -12,7 +12,7 @@ public class GameOverUIManager : MonoBehaviour
         float maxLevelReached = Spawner.GetInstance().GetProgressMultiplier();
         //maxScoreReached = maxScoreReached == 0 ? 1 : maxScoreReached;
         highScore.text = maxScoreReached.ToString();
-        levelReached.text = "LEVEL REACHED: " + maxLevelReached.ToString();
+        levelReached.text = maxLevelReached.ToString();
     }
     
 }

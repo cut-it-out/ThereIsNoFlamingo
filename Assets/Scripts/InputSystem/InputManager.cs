@@ -12,6 +12,8 @@ public class InputManager : Singleton<InputManager>
     public event RealViewActivated OnRealViewKeyPressed;
     public delegate void PauseMenuToggle();
     public event PauseMenuToggle OnPauseMenuToggle;
+    public delegate void AnyKeyPress();
+    public event AnyKeyPress OnAnyKeyPressed;
 
     #endregion
 
@@ -56,6 +58,12 @@ public class InputManager : Singleton<InputManager>
         playerControls.Player.Movement.canceled += ctx => OnWASDPressed(ctx);
         playerControls.Player.RealViewActivation.started += ctx => RealViewKeyPressed(ctx);
         playerControls.Player.PauseMenuActivation.started += ctx => PauseMenuKeyPressed(ctx);
+        playerControls.Player.AnyKeyPress.started += ctx => AnyKeyPressed(ctx);
+    }
+
+    private void AnyKeyPressed(InputAction.CallbackContext ctx)
+    {
+        OnAnyKeyPressed?.Invoke();
     }
 
     #region Keyboard input

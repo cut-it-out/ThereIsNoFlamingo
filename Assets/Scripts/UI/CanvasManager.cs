@@ -11,7 +11,8 @@ public enum CanvasType
     GameOver,
     LifeLostFeedbackScreen,
     YouDiedSplashScreen,
-    PositiveFeedbackScreen
+    PositiveFeedbackScreen,
+    TutorialScreen
 }
 
 public class CanvasManager : Singleton<CanvasManager>
@@ -28,12 +29,12 @@ public class CanvasManager : Singleton<CanvasManager>
         
     }
 
-    //public void ActivateIntro()
-    //{
-    //    // active intro canvas and trigger intro
-    //    ActivateCanvas(CanvasType.IntroUI, true);
-    //    canvasControllerList.Find(x => x.canvasType == CanvasType.IntroUI).GetComponent<IntroUIManager>().TriggerIntroStart();
-    //}
+    public void ActivateIntro()
+    {
+        // active intro canvas and trigger intro
+        SwitchCanvas(CanvasType.TutorialScreen);
+        canvasControllerList.Find(x => x.canvasType == CanvasType.TutorialScreen).GetComponent<TutorialScreenManager>().TriggerIntroStart();
+    }
 
     public void SwitchCanvas(CanvasType _type)
     {
