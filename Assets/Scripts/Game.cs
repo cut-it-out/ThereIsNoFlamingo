@@ -172,6 +172,8 @@ public class Game : Singleton<Game>
     {
         // TODO: maybe refactor to use events to trigger stuff in other classes (like spawner, audiomanager)
 
+        SetRealView(false); // Reset RealView to might fix audio issue
+
         StopGame();
 
         AudioManager.GetInstance().StopMusic();
