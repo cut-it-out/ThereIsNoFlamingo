@@ -652,11 +652,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!1 &536341930 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 536341930, guid: 4fe265b76ee1dc44a801ad6c282beebd, type: 3}
-  m_PrefabInstance: {fileID: 1990747757713573333}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &674100812
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -772,6 +767,36 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8884070642381245029, guid: fcd8f3cb46bb8fa41a68edb363a21359, type: 3}
   m_PrefabInstance: {fileID: 6246268768745774171}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &910015746
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 910015747}
+  m_Layer: 0
+  m_Name: ParticlePlaceholder
+  m_TagString: Untagged
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &910015747
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910015746}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 18.54, y: 0.06, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1167668834
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1604,29 +1629,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1907282677}
     - target: {fileID: 347005783358018263, guid: 716db3f8022965341a2690f11b251bc3, type: 3}
+      propertyPath: levelUpVfx
+      value: 
+      objectReference: {fileID: 7021589827771095423, guid: 81639c1c4a75d20469b66c9ebaf17149, type: 3}
+    - target: {fileID: 347005783358018263, guid: 716db3f8022965341a2690f11b251bc3, type: 3}
       propertyPath: globalVolume
       value: 
       objectReference: {fileID: 146692224}
     - target: {fileID: 347005783358018263, guid: 716db3f8022965341a2690f11b251bc3, type: 3}
-      propertyPath: notCatchedZone
+      propertyPath: levelUpVfxPosition
       value: 
-      objectReference: {fileID: 536341930}
-    - target: {fileID: 347005783358018263, guid: 716db3f8022965341a2690f11b251bc3, type: 3}
-      propertyPath: initialLifeCount
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 347005783358018263, guid: 716db3f8022965341a2690f11b251bc3, type: 3}
-      propertyPath: fuelToTimeExchangeRate
-      value: 3.1
-      objectReference: {fileID: 0}
-    - target: {fileID: 347005783358018263, guid: 716db3f8022965341a2690f11b251bc3, type: 3}
-      propertyPath: visualFeedbackInterval
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 347005783358018263, guid: 716db3f8022965341a2690f11b251bc3, type: 3}
-      propertyPath: lifeLostFeedbackInterval
-      value: 0.5
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 910015747}
     - target: {fileID: 347005783358018264, guid: 716db3f8022965341a2690f11b251bc3, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1770,11 +1783,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1990747757136457390, guid: 4fe265b76ee1dc44a801ad6c282beebd, type: 3}
       propertyPath: speedIncrementValue
-      value: 0.8
+      value: 0.9
       objectReference: {fileID: 0}
     - target: {fileID: 1990747757136457390, guid: 4fe265b76ee1dc44a801ad6c282beebd, type: 3}
       propertyPath: spawnIntervalIncrementValue
-      value: -0.15
+      value: -0.17
       objectReference: {fileID: 0}
     - target: {fileID: 1990747757136457391, guid: 4fe265b76ee1dc44a801ad6c282beebd, type: 3}
       propertyPath: m_Name

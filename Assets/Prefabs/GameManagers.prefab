@@ -44,13 +44,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06d15957ea27a1c4492d69e838e263ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  realViewEnabledInterval: 3
-  realViewCooldownInterval: 2
+  fuelContainerMax: 60
+  fuelInitialValue: 30
+  fuelToTimeExchangeRate: 3.2
+  visualFeedbackInterval: 0.25
   globalVolume: {fileID: 0}
-  initialLifeCount: 3
-  lifeLostFeedbackInterval: 1
-  feebackShakeIntensity: 2
-  notCatchedZone: {fileID: 0}
+  levelUpVfx: {fileID: 0}
+  levelUpVfxLifetime: 3
+  levelUpVfxPosition: {fileID: 0}
+  player: {fileID: 0}
 --- !u!114 &347005783358018265
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -18,6 +18,11 @@ public class Game : Singleton<Game>
     [SerializeField] private float visualFeedbackInterval = 1f;
     [SerializeField] private Volume globalVolume;
 
+    [Header("LevelUp VFX")]
+    [SerializeField] ParticleSystem levelUpVfx = null;
+    [SerializeField] float levelUpVfxLifetime = 3f;
+    [SerializeField] Transform levelUpVfxPosition;
+
     //[Header("Progress related")]
     //[SerializeField] private int progressAfterScore = 5;
 
@@ -263,7 +268,8 @@ public class Game : Singleton<Game>
         else if (newFuelValue > fuelContainerMax)
         {
             //progress to next stage
-            // TODO: trigger some nice effect???
+            TriggerLevelUpParticles();
+            
             newFuelValue = fuelInitialValue;
             Spawner.GetInstance().IncreaseProgressMultiplier();
         }
@@ -285,6 +291,13 @@ public class Game : Singleton<Game>
         if (CurrentFuel == 0f) GameOver();
 
     }
+
+    private void TriggerLevelUpParticles()
+    {
+        ParticleSystem levelUpParticles = Instantiate(levelUpVfx, levelUpVfxPosition.position, levelUpVfxPosition.rotation);
+        Destroy(levelUpParticles, levelUpVfxLifetime);
+    }
+
 
     private void InitFuelContainer()
     {
