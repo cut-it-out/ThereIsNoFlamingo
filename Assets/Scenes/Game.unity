@@ -1340,6 +1340,10 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9173132882953404218, guid: bc061eb36f8924f49ae725a888b4cee1, type: 3}
+      propertyPath: timeToTween
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 9173132882953404218, guid: bc061eb36f8924f49ae725a888b4cee1, type: 3}
       propertyPath: notRealSprite
       value: 
       objectReference: {fileID: 21300000, guid: 97eee1cb807503b42bffb36dc9dd7769, type: 3}

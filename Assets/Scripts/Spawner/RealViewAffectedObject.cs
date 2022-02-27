@@ -36,10 +36,10 @@ public class RealViewAffectedObject : MonoBehaviour
         IsRealObject = value;
     }
 
-    public virtual void DestroySelf()
+    public virtual void DestroySelf(float timeToTween = 0.1f)
     {
         Game.GetInstance().OnRealViewToggle -= RealViewObject_OnRealViewToggle;
-        Destroy(gameObject);
+        Destroy(gameObject, timeToTween + 0.1f);
         // TODO: Add animation/effect 
     }
 }

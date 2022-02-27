@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using DG.Tweening;
 
 public class Game : Singleton<Game>
 {
@@ -81,6 +82,10 @@ public class Game : Singleton<Game>
 
         // set fuel container values to initial value
         InitFuelContainer();
+
+        //init tweening
+        DOTween.Init();
+        DOTween.SetTweensCapacity(1000, 50);
 
     }
 

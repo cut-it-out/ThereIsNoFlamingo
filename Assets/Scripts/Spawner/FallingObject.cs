@@ -48,11 +48,12 @@ public class FallingObject : RealViewAffectedObject
         paddingRight = this.paddingRight;
     }
 
-    public override void DestroySelf()
+    public override void DestroySelf(float timeToTween = 0.1f)
     {
+        gameObject.GetComponent<CircleCollider2D>().enabled = false;
         Spawner.GetInstance().RemoveFallingObject(this);
         Spawner.GetInstance().OnProgressMultiplierChange -= FallingObject_OnProgressMultiplierChange;
-        base.DestroySelf();
+        base.DestroySelf(timeToTween);
     }
 
     protected override void OnEnable()

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using DG.Tweening;
 
 public class Player : RealViewAffectedObject
 {
@@ -12,6 +13,9 @@ public class Player : RealViewAffectedObject
     [Header("Player Movement padding")]
     [SerializeField] float paddingLeft;
     [SerializeField] float paddingRight;
+
+    [Header("Tweening settings")]
+    [SerializeField] private float timeToTween = 0.5f;
 
     float playerSpeed;
     private const float PLAYER_SPEED_MULTIPLIER = 3.5f; // times the falling object current speed
@@ -63,7 +67,8 @@ public class Player : RealViewAffectedObject
             game.IncreaseCurrentScore();
             game.UpdateFuelContainer(fallingObject.GetFuelGain());
             //TODO: add some nice effect to visualize correct catch :)
-            fallingObject.DestroySelf();
+            DoAnim(fallingObject.gameObject.transform);
+            fallingObject.DestroySelf(timeToTween);
         }
         else
         {
@@ -71,9 +76,15 @@ public class Player : RealViewAffectedObject
             if (!game.IsRealViewEnabled)
             {
                 game.UpdateFuelContainer(-fallingObject.GetFuelLost());
-                fallingObject.DestroySelf();
+                DoAnim(fallingObject.gameObject.transform);
+                fallingObject.DestroySelf(timeToTween);
             }
         }
+    }
+
+    private void DoAnim(Transform t)
+    {
+        t.DOScale(0.01f, timeToTween).SetEase(Ease.InOutBounce);
     }
 
     private void InitBounds()
