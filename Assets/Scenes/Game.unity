@@ -1647,6 +1647,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 472873306, guid: bbbd612fa2b3f0e43aae9d1193220964, type: 3}
+      propertyPath: m_CutoffFrequency
+      value: 922
+      objectReference: {fileID: 0}
+    - target: {fileID: 3391362927630230326, guid: bbbd612fa2b3f0e43aae9d1193220964, type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3391362927686915830, guid: bbbd612fa2b3f0e43aae9d1193220964, type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3391362927686915830, guid: bbbd612fa2b3f0e43aae9d1193220964, type: 3}
+      propertyPath: m_Volume
+      value: 0.653
+      objectReference: {fileID: 0}
     - target: {fileID: 3391362927686915830, guid: bbbd612fa2b3f0e43aae9d1193220964, type: 3}
       propertyPath: m_audioClip
       value: 
@@ -1699,6 +1715,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3391362927971210238, guid: bbbd612fa2b3f0e43aae9d1193220964, type: 3}
+      propertyPath: damageClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 01a7687d53b14e44abad20a887941ce7, type: 3}
+    - target: {fileID: 3391362927971210238, guid: bbbd612fa2b3f0e43aae9d1193220964, type: 3}
+      propertyPath: gameoverClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 5dedcdb8a64cc0c4e8332412fee62e8e, type: 3}
+    - target: {fileID: 3391362927971210238, guid: bbbd612fa2b3f0e43aae9d1193220964, type: 3}
+      propertyPath: positiveFeedbackClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 968d07d133863aa41bbefaab4eb088c1, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bbbd612fa2b3f0e43aae9d1193220964, type: 3}
 --- !u!1001 &6246268768745774171

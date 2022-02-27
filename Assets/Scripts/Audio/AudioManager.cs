@@ -93,6 +93,7 @@ public class AudioManager : Singleton<AudioManager>
         IsMusicEnabled = value;
         if (IsMusicEnabled)
         {
+            EnableMusicEffect(Game.GetInstance().IsRealViewEnabled);
             musicAudioSource.Play();
         }
         else
@@ -103,6 +104,7 @@ public class AudioManager : Singleton<AudioManager>
 
     public void StopMusic()
     {
+        EnableMusicEffect(false);
         musicAudioSource.Stop();
     }
 }

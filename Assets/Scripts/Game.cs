@@ -174,6 +174,8 @@ public class Game : Singleton<Game>
 
         StopGame();
 
+        AudioManager.GetInstance().StopMusic();
+        AudioManager.GetInstance().PlayGameoverSound();
         //StartCoroutine(DisplayLifeLostFeedback()); // already handled previously
         //canvasManager.SwitchCanvas(CanvasType.YouDiedSplashScreen);
         canvasManager.SwitchCanvas(CanvasType.GameOver);
