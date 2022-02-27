@@ -1399,7 +1399,7 @@ PrefabInstance:
       objectReference: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
     - target: {fileID: 9173132882953404218, guid: bc061eb36f8924f49ae725a888b4cee1, type: 3}
       propertyPath: paddingLeft
-      value: 5.5
+      value: 5.75
       objectReference: {fileID: 0}
     - target: {fileID: 9173132882953404218, guid: bc061eb36f8924f49ae725a888b4cee1, type: 3}
       propertyPath: playerSpeed
@@ -1407,7 +1407,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9173132882953404218, guid: bc061eb36f8924f49ae725a888b4cee1, type: 3}
       propertyPath: paddingRight
-      value: 16.5
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 9173132882953404218, guid: bc061eb36f8924f49ae725a888b4cee1, type: 3}
       propertyPath: playerYPosition

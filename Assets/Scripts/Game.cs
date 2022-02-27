@@ -243,8 +243,6 @@ public class Game : Singleton<Game>
 
     public void UpdateFuelContainer(float value = 0f)
     {
-        Debug.Log($"UpdateFuelContainer - value: {value}");
-
         float newFuelValue = CurrentFuel + value;
 
         if (newFuelValue <= 0f)
@@ -271,9 +269,6 @@ public class Game : Singleton<Game>
         {
             StartCoroutine(DisplayPositiveFeedback());
         }
-
-        Debug.Log($"UpdateFuelContainer - game.MaxFuel: {MaxFuel}");
-        Debug.Log($"UpdateFuelContainer - game.CurrentFuel: {CurrentFuel}");
 
         // Trigger related event
         OnFuelChanged?.Invoke();
