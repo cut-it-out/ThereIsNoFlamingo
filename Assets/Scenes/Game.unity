@@ -1640,6 +1640,10 @@ PrefabInstance:
       propertyPath: levelUpVfxPosition
       value: 
       objectReference: {fileID: 910015747}
+    - target: {fileID: 347005783358018263, guid: 716db3f8022965341a2690f11b251bc3, type: 3}
+      propertyPath: fuelToTimeExchangeRate
+      value: 6.5
+      objectReference: {fileID: 0}
     - target: {fileID: 347005783358018264, guid: 716db3f8022965341a2690f11b251bc3, type: 3}
       propertyPath: m_RootOrder
       value: 3
