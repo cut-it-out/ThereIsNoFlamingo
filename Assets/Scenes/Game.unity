@@ -1333,18 +1333,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 462674845060159214, guid: bc061eb36f8924f49ae725a888b4cee1, type: 3}
-      propertyPath: m_Color.b
-      value: 0.9843138
-      objectReference: {fileID: 0}
-    - target: {fileID: 462674845060159214, guid: bc061eb36f8924f49ae725a888b4cee1, type: 3}
-      propertyPath: m_Color.g
-      value: 0.44705886
-      objectReference: {fileID: 0}
-    - target: {fileID: 462674845060159214, guid: bc061eb36f8924f49ae725a888b4cee1, type: 3}
-      propertyPath: m_Color.r
-      value: 0.011764707
-      objectReference: {fileID: 0}
     - target: {fileID: 8882623111191086872, guid: bc061eb36f8924f49ae725a888b4cee1, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -1396,22 +1384,18 @@ PrefabInstance:
     - target: {fileID: 9173132882953404218, guid: bc061eb36f8924f49ae725a888b4cee1, type: 3}
       propertyPath: realSprite
       value: 
-      objectReference: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-    - target: {fileID: 9173132882953404218, guid: bc061eb36f8924f49ae725a888b4cee1, type: 3}
-      propertyPath: paddingLeft
-      value: 5.75
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 21300000, guid: 97eee1cb807503b42bffb36dc9dd7769, type: 3}
     - target: {fileID: 9173132882953404218, guid: bc061eb36f8924f49ae725a888b4cee1, type: 3}
       propertyPath: playerSpeed
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 9173132882953404218, guid: bc061eb36f8924f49ae725a888b4cee1, type: 3}
-      propertyPath: paddingRight
-      value: 17
-      objectReference: {fileID: 0}
+      propertyPath: notRealSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 97eee1cb807503b42bffb36dc9dd7769, type: 3}
     - target: {fileID: 9173132882953404218, guid: bc061eb36f8924f49ae725a888b4cee1, type: 3}
       propertyPath: playerYPosition
-      value: -10
+      value: -10.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc061eb36f8924f49ae725a888b4cee1, type: 3}
@@ -1567,6 +1551,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1990747757136457390, guid: 4fe265b76ee1dc44a801ad6c282beebd, type: 3}
+      propertyPath: prefabToSpawn
+      value: 
+      objectReference: {fileID: 1358164412274691944, guid: 8e7c0512b0771584e90c97fefafb32e0, type: 3}
     - target: {fileID: 1990747757136457390, guid: 4fe265b76ee1dc44a801ad6c282beebd, type: 3}
       propertyPath: spawnZoneYPos
       value: 
