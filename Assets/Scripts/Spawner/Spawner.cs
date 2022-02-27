@@ -151,7 +151,7 @@ public class Spawner : Singleton<Spawner>
 
     public void IncreaseProgressMultiplier(float incrementValue = 1f)
     {
-        if (progressMultiplier == maxProgressMultiplier) return;
+        //if (progressMultiplier == maxProgressMultiplier) return;
 
         progressMultiplier += incrementValue;
         UpdateFallingSpeedAndSpawnInterval();
