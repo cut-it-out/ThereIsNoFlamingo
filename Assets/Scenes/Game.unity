@@ -737,7 +737,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8853820471240883427, guid: 77b123bbd1ff57040871d5beaee86bc5, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -3.3049927
+      value: -3.3049316
       objectReference: {fileID: 0}
     - target: {fileID: 8853820471240883427, guid: 77b123bbd1ff57040871d5beaee86bc5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1417,10 +1417,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3547899450831106778, guid: bc061eb36f8924f49ae725a888b4cee1, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 3
-      objectReference: {fileID: 0}
     - target: {fileID: 8882623111191086872, guid: bc061eb36f8924f49ae725a888b4cee1, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -1469,34 +1465,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 8882623111191086877, guid: bc061eb36f8924f49ae725a888b4cee1, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9173132882953404218, guid: bc061eb36f8924f49ae725a888b4cee1, type: 3}
-      propertyPath: realSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 97eee1cb807503b42bffb36dc9dd7769, type: 3}
-    - target: {fileID: 9173132882953404218, guid: bc061eb36f8924f49ae725a888b4cee1, type: 3}
-      propertyPath: playerSpeed
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 9173132882953404218, guid: bc061eb36f8924f49ae725a888b4cee1, type: 3}
-      propertyPath: timeToTween
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 9173132882953404218, guid: bc061eb36f8924f49ae725a888b4cee1, type: 3}
-      propertyPath: notRealSprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 97eee1cb807503b42bffb36dc9dd7769, type: 3}
-    - target: {fileID: 9173132882953404218, guid: bc061eb36f8924f49ae725a888b4cee1, type: 3}
-      propertyPath: playerXPosition
-      value: -3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 9173132882953404218, guid: bc061eb36f8924f49ae725a888b4cee1, type: 3}
-      propertyPath: playerYPosition
-      value: -10.53
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bc061eb36f8924f49ae725a888b4cee1, type: 3}
 --- !u!1 &2052150581
@@ -1523,7 +1491,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2052150581}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 9}
+  m_LocalPosition: {x: 0, y: 0, z: 11}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2064236701}
@@ -1767,7 +1735,7 @@ PrefabInstance:
       objectReference: {fileID: 1990747757713573334}
     - target: {fileID: 1990747757136457390, guid: 4fe265b76ee1dc44a801ad6c282beebd, type: 3}
       propertyPath: maxItemsPerRow
-      value: 8
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 1990747757136457390, guid: 4fe265b76ee1dc44a801ad6c282beebd, type: 3}
       propertyPath: minItemsPerRow
@@ -1783,7 +1751,7 @@ PrefabInstance:
       objectReference: {fileID: 1990747757713573336}
     - target: {fileID: 1990747757136457390, guid: 4fe265b76ee1dc44a801ad6c282beebd, type: 3}
       propertyPath: verticalVariance
-      value: 2.5
+      value: 2.7
       objectReference: {fileID: 0}
     - target: {fileID: 1990747757136457390, guid: 4fe265b76ee1dc44a801ad6c282beebd, type: 3}
       propertyPath: speedIncrementValue

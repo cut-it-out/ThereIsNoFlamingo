@@ -17,7 +17,7 @@ public class Spawner : Singleton<Spawner>
     [SerializeField] float initialFallingSpeed = 2f;
     [SerializeField] float speedIncrementValue = 0.1f;
     [SerializeField] float spawnIntervalIncrementValue = -0.1f;
-    [SerializeField] float maxProgressMultiplier = 10f;
+    [SerializeField] float maxProgressMultiplier = 200f;
 
     [Header("Spawner Input")]
     [SerializeField] GameObject prefabToSpawn;
@@ -30,6 +30,8 @@ public class Spawner : Singleton<Spawner>
     private float spawnInterval;
     private float fallingSpeed;
     private float progressMultiplier = 0f;
+
+    private const float INCREMENT_MULTIPLIER_BASE = 1f;
 
     private float minSpawnX;
     private float maxSpawnX;
@@ -149,9 +151,9 @@ public class Spawner : Singleton<Spawner>
         fallingObjects.Clear();
     }
 
-    public void IncreaseProgressMultiplier(float incrementValue = 1f)
+    public void IncreaseProgressMultiplier(float incrementValue = INCREMENT_MULTIPLIER_BASE)
     {
-        //if (progressMultiplier == maxProgressMultiplier) return;
+        if (progressMultiplier == maxProgressMultiplier) return;
 
         progressMultiplier += incrementValue;
         UpdateFallingSpeedAndSpawnInterval();

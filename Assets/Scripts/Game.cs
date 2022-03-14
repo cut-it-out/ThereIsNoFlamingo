@@ -13,6 +13,7 @@ public class Game : Singleton<Game>
     [SerializeField] private float fuelContainerMax = 60f;
     [SerializeField] private float fuelInitialValue = 30f;
     [SerializeField] private float fuelToTimeExchangeRate = 1f; //in seconds, so 10 fuel = 10 seconds
+    [SerializeField] private float fuelLossIncrementValue = 1f;
 
     [Header("Visual Feedback related")]
     [SerializeField] private float visualFeedbackInterval = 1f;
@@ -310,7 +311,12 @@ public class Game : Singleton<Game>
     {
         if (IsRealViewEnabled)
         {
-            UpdateFuelContainer(-(Time.deltaTime * fuelToTimeExchangeRate));
+            UpdateFuelContainer(
+                - Time.deltaTime * (
+                    (fuelToTimeExchangeRate)
+                    +
+                    (fuelLossIncrementValue * Spawner.GetInstance().GetProgressMultiplier())
+                ));
         }
         else
         {

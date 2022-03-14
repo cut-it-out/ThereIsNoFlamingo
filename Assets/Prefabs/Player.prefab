@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 3994372286544730874}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.8, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8882623111191086872}
   m_RootOrder: 0
@@ -107,8 +107,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8089358093230187279}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7.9, y: -0.329, z: 5}
-  m_LocalScale: {x: 18.13, y: 0.58, z: 1}
+  m_LocalPosition: {x: -7.9, y: -0.329, z: 3}
+  m_LocalScale: {x: 17.6, y: 0.58, z: 1}
   m_Children: []
   m_Father: {fileID: 8882623111191086872}
   m_RootOrder: 1
@@ -211,13 +211,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9ed343cbf3b9db42b73c46145dc31a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notRealSprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  realSprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  notRealSprite: {fileID: 21300000, guid: 97eee1cb807503b42bffb36dc9dd7769, type: 3}
+  realSprite: {fileID: 21300000, guid: 97eee1cb807503b42bffb36dc9dd7769, type: 3}
   objMeshWithSpriteRenderer: {fileID: 5434492336937336028}
-  playerXPosition: 0
-  playerYPosition: -10
+  playerXPosition: -3.5
+  playerYPosition: -10.53
   paddingLeft: 5.75
   paddingRight: 17
+  timeToTween: 0.4
 --- !u!61 &5687238389112549009
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -231,7 +232,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.02396655, y: 0.28759968}
+  m_Offset: {x: 0.01608622, y: 0.30598706}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -242,7 +243,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.2462654, y: 0.42480063}
+  m_Size: {x: 1.66, y: 0.38802588}
   m_EdgeRadius: 0
 --- !u!50 &3265603812365786614
 Rigidbody2D:
