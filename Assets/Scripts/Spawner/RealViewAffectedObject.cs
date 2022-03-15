@@ -40,6 +40,5 @@ public class RealViewAffectedObject : MonoBehaviour
     {
         Game.GetInstance().OnRealViewToggle -= RealViewObject_OnRealViewToggle;
         Destroy(gameObject, timeToTween + 0.1f);
-        // TODO: Add animation/effect 
     }
 }

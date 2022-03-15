@@ -64,7 +64,7 @@ public class Spawner : Singleton<Spawner>
 
         UpdateFallingSpeedAndSpawnInterval();
 
-        Debug.Log($"current fallingSpeed: {fallingSpeed}");
+        //Debug.Log($"current fallingSpeed: {fallingSpeed}");
     }
 
     public void InitSpawner()
@@ -93,8 +93,6 @@ public class Spawner : Singleton<Spawner>
     {
         FallingObject fallingObj = prefabToSpawn.GetComponent<FallingObject>();
         fallingObj.GetPadding(out float objPaddingLeft, out float objPaddingRight);
-
-        // TODO: add variance to available spawnLineDistance (have items more concentrated in middle)
 
         float spawnDistance = spawnLineDistance / nbrOfItemsToSpawn;
 
@@ -161,11 +159,14 @@ public class Spawner : Singleton<Spawner>
 
     public void IncreaseProgressMultiplier(float incrementValue = INCREMENT_MULTIPLIER_BASE)
     {
-        if (progressMultiplier == maxProgressMultiplier) return;
-
         progressMultiplier += incrementValue;
+
+        // if max level reached, trigger game over
+        if (progressMultiplier == maxProgressMultiplier) 
+            Game.GetInstance().GameOver();
+
         UpdateFallingSpeedAndSpawnInterval();
-        Debug.Log($"The Game just got harder, setting multiplier to {progressMultiplier}");
+        //Debug.Log($"The Game just got harder, setting multiplier to {progressMultiplier}");
 
         // trigger change event
         OnProgressMultiplierChange?.Invoke(fallingSpeed);
