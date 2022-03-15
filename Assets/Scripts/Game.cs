@@ -321,7 +321,7 @@ public class Game : Singleton<Game>
         else
         {
             // if RealView is not active
-            // TODO: do I want to slowly decrease the fuel?
+
         }
     }
 

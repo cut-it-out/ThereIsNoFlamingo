@@ -29,7 +29,7 @@ public class Spawner : Singleton<Spawner>
 
     private float spawnInterval;
     private float fallingSpeed;
-    private float progressMultiplier = 0f;
+    private float progressMultiplier;
 
     private const float INCREMENT_MULTIPLIER_BASE = 1f;
 
@@ -49,19 +49,27 @@ public class Spawner : Singleton<Spawner>
         // set min & max X pos
         minSpawnX = spawnZoneXMinPos.transform.position.x;
         maxSpawnX = spawnZoneXMaxPos.transform.position.x;
-                
+
         // calculate distance to place objects same distance from each other
         spawnLineDistance = Vector2.Distance(spawnZoneXMinPos.transform.position, spawnZoneXMaxPos.transform.position);
+        
+    }
+
+    private void InitProgressMultiplier()
+    {
+        progressMultiplier = 0f;
 
         // trigger player move speed update
         OnProgressMultiplierChange?.Invoke(initialFallingSpeed);
 
         UpdateFallingSpeedAndSpawnInterval();
 
+        Debug.Log($"current fallingSpeed: {fallingSpeed}");
     }
 
     public void InitSpawner()
     {
+        InitProgressMultiplier();
         StopSpawner(); //double check to be sure not to run several times :D
         spawnerCR = StartCoroutine(SpawnerTask());
     }
