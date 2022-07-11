@@ -1,6 +1,7 @@
 # ThereIsNoFlamingo
 
 This is a small action memory puzzle game created for the Brackeys Game Jam 2022.1
+You can play in in browser here: https://888randomgames.itch.io/the-pompom-is-not-real
 
 ![](https://img.itch.zone/aW1nLzgyODE3NDguZ2lm/315x250%23c/chhXDk.gif)
 
